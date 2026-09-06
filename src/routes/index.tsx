@@ -25,6 +25,10 @@ import heroImg from "@/assets/hero-news.jpg";
 import aiImg from "@/assets/news-ai.jpg";
 import devImg from "@/assets/news-dev.jpg";
 import securityImg from "@/assets/news-security.jpg";
+import cloudImg from "@/assets/news-cloud.jpg";
+import gameImg from "@/assets/news-game.jpg";
+import careerImg from "@/assets/news-career.jpg";
+import eventImg from "@/assets/news-event.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -69,16 +73,16 @@ const ARTICLES = [
     category: "Yapay Zeka",
     title: "Yerel LLM'ler 2026'da kurumsal yazılımın kalbine yerleşiyor",
     excerpt:
-      "Küçük dil modellerinin donanım üzerindeki verimliliği, bulut bağımlılığını azaltarak yeni bir mimari dalga başlattı.",
+      "7-13 milyar parametreli modellerin tek bir GPU'da saniyede yüzlerce token üretebilmesi, kurumların veri gizliliği kaygısıyla buluta gönderemediği iş yüklerini yeniden şirket içine taşıyor. Bankacılıktan sağlığa uzanan sektörlerde, ince ayar yapılmış küçük modeller artık genel amaçlı dev modellerle başa baş sonuç veriyor. Uzmanlar, önümüzdeki iki yıl içinde kurumsal yapay zeka harcamalarının üçte birinin yerel altyapıya kayacağını öngörüyor.",
     date: "5 Eylül 2026",
     readTime: "6 dk",
   },
   {
     image: devImg,
     category: "Yazılım",
-    title: "Rust mı, Go mu? Sistem programlamada 2026'nın kazananı",
+    title: "Rust mı, Go mu? Sistem programlamada 2026'nın kazananı netleşiyor",
     excerpt:
-      "Büyük ölçekli altyapı ekiplerinin tercihleri, performans ve geliştirici deneyimi dengesini yeniden tanımlıyor.",
+      "Bellek güvenliği artık bir tercih değil, kamu ihalelerinde dahi aranan bir şart haline geldi. Rust, çekirdek bileşenlerde ve güvenlik açısından kritik yollarda standart olurken; Go, hızlı geliştirme döngüsü ve sade sözdizimiyle mikroservis dünyasındaki tahtını koruyor. Büyük ölçekli altyapı ekipleri, iki dili birbirinin rakibi değil tamamlayıcısı olarak konumlandırıyor: performans kritik katmanda Rust, iş mantığı ve orkestrasyonda Go.",
     date: "4 Eylül 2026",
     readTime: "8 dk",
   },
@@ -87,9 +91,36 @@ const ARTICLES = [
     category: "Siber Güvenlik",
     title: "Sıfır güven mimarisi artık KOBİ'ler için de erişilebilir",
     excerpt:
-      "Yeni nesil kimlik doğrulama araçları, kurumsal düzeyde güvenliği küçük ekiplerin bütçesine indiriyor.",
+      "Kimlik avı saldırılarının yapay zeka ile kişiselleşmesi, küçük ekipleri de kurumsal düzeyde savunma arayışına itti. Yeni nesil kimlik ve erişim yönetimi araçları, donanım anahtarlı doğrulama ve cihaz bazlı güven politikalarını dakikalar içinde kurulabilen paketlere dönüştürdü. Sektör raporlarına göre sıfır güven yaklaşımını benimseyen KOBİ'lerde başarılı sızma girişimleri yıldan yıla belirgin biçimde azalıyor.",
     date: "3 Eylül 2026",
     readTime: "5 dk",
+  },
+  {
+    image: cloudImg,
+    category: "Bulut Bilişim",
+    title: "Çoklu bulut stratejisi maliyet baskısıyla yeniden tanımlanıyor",
+    excerpt:
+      "Şirketler, tek sağlayıcıya bağımlılığın faturasını kesinti günlerinde ödediğini fark etti. Ancak çoklu bulutun getirdiği operasyonel karmaşa, platform mühendisliği ekiplerini yeni bir denge arayışına yöneltti: kritik veri katmanı sağlayıcıdan bağımsız, hesaplama katmanı ise esnek. Kubernetes tabanlı soyutlama katmanları ve açık standartlar, bu geçişin en önemli taşıyıcıları olarak öne çıkıyor.",
+    date: "2 Eylül 2026",
+    readTime: "7 dk",
+  },
+  {
+    image: gameImg,
+    category: "Oyun Geliştirme",
+    title: "Bağımsız oyun stüdyoları prosedürel üretim araçlarıyla devleşiyor",
+    excerpt:
+      "Beş kişilik ekiplerin yüzlerce saatlik açık dünya içeriği üretebildiği bir döneme girdik. Prosedürel seviye tasarımı ve yapay zeka destekli varlık üretimi, bağımsız stüdyoların en büyük dezavantajı olan içerik hacmini ortadan kaldırıyor. Türkiye'den çıkan bağımsız yapımlar da bu rüzgârla uluslararası platformlarda öne çıkıyor; sektör temsilcileri yaratıcı tasarımın artık bütçeden değil araç hakimiyetinden geçtiğini vurguluyor.",
+    date: "1 Eylül 2026",
+    readTime: "6 dk",
+  },
+  {
+    image: heroImg,
+    category: "Donanım",
+    title: "Çiplet mimarisi işlemci tasarımında yeni bir rekabet alanı açtı",
+    excerpt:
+      "Tek parça dev yongaların yerini lego gibi birleşen çipletler alırken, rekabet transistör yoğunluğundan paketleme teknolojisine kaydı. Farklı üretim düğümlerinde üretilen çekirdek, bellek ve G/Ç chiplerinin tek pakette buluşması, hem maliyeti düşürüyor hem de tasarım esnekliği sağlıyor. Mühendislik ekipleri için bu, bilgisayar mimarisi derslerindeki varsayımların yeniden yazılması anlamına geliyor.",
+    date: "31 Ağustos 2026",
+    readTime: "9 dk",
   },
 ];
 
