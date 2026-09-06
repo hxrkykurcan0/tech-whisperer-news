@@ -25,6 +25,10 @@ import heroImg from "@/assets/hero-news.jpg";
 import aiImg from "@/assets/news-ai.jpg";
 import devImg from "@/assets/news-dev.jpg";
 import securityImg from "@/assets/news-security.jpg";
+import cloudImg from "@/assets/news-cloud.jpg";
+import gameImg from "@/assets/news-game.jpg";
+import careerImg from "@/assets/news-career.jpg";
+import eventImg from "@/assets/news-event.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -69,16 +73,16 @@ const ARTICLES = [
     category: "Yapay Zeka",
     title: "Yerel LLM'ler 2026'da kurumsal yazılımın kalbine yerleşiyor",
     excerpt:
-      "Küçük dil modellerinin donanım üzerindeki verimliliği, bulut bağımlılığını azaltarak yeni bir mimari dalga başlattı.",
+      "7-13 milyar parametreli modellerin tek bir GPU'da saniyede yüzlerce token üretebilmesi, kurumların veri gizliliği kaygısıyla buluta gönderemediği iş yüklerini yeniden şirket içine taşıyor. Bankacılıktan sağlığa uzanan sektörlerde, ince ayar yapılmış küçük modeller artık genel amaçlı dev modellerle başa baş sonuç veriyor. Uzmanlar, önümüzdeki iki yıl içinde kurumsal yapay zeka harcamalarının üçte birinin yerel altyapıya kayacağını öngörüyor.",
     date: "5 Eylül 2026",
     readTime: "6 dk",
   },
   {
     image: devImg,
     category: "Yazılım",
-    title: "Rust mı, Go mu? Sistem programlamada 2026'nın kazananı",
+    title: "Rust mı, Go mu? Sistem programlamada 2026'nın kazananı netleşiyor",
     excerpt:
-      "Büyük ölçekli altyapı ekiplerinin tercihleri, performans ve geliştirici deneyimi dengesini yeniden tanımlıyor.",
+      "Bellek güvenliği artık bir tercih değil, kamu ihalelerinde dahi aranan bir şart haline geldi. Rust, çekirdek bileşenlerde ve güvenlik açısından kritik yollarda standart olurken; Go, hızlı geliştirme döngüsü ve sade sözdizimiyle mikroservis dünyasındaki tahtını koruyor. Büyük ölçekli altyapı ekipleri, iki dili birbirinin rakibi değil tamamlayıcısı olarak konumlandırıyor: performans kritik katmanda Rust, iş mantığı ve orkestrasyonda Go.",
     date: "4 Eylül 2026",
     readTime: "8 dk",
   },
@@ -87,9 +91,36 @@ const ARTICLES = [
     category: "Siber Güvenlik",
     title: "Sıfır güven mimarisi artık KOBİ'ler için de erişilebilir",
     excerpt:
-      "Yeni nesil kimlik doğrulama araçları, kurumsal düzeyde güvenliği küçük ekiplerin bütçesine indiriyor.",
+      "Kimlik avı saldırılarının yapay zeka ile kişiselleşmesi, küçük ekipleri de kurumsal düzeyde savunma arayışına itti. Yeni nesil kimlik ve erişim yönetimi araçları, donanım anahtarlı doğrulama ve cihaz bazlı güven politikalarını dakikalar içinde kurulabilen paketlere dönüştürdü. Sektör raporlarına göre sıfır güven yaklaşımını benimseyen KOBİ'lerde başarılı sızma girişimleri yıldan yıla belirgin biçimde azalıyor.",
     date: "3 Eylül 2026",
     readTime: "5 dk",
+  },
+  {
+    image: cloudImg,
+    category: "Bulut Bilişim",
+    title: "Çoklu bulut stratejisi maliyet baskısıyla yeniden tanımlanıyor",
+    excerpt:
+      "Şirketler, tek sağlayıcıya bağımlılığın faturasını kesinti günlerinde ödediğini fark etti. Ancak çoklu bulutun getirdiği operasyonel karmaşa, platform mühendisliği ekiplerini yeni bir denge arayışına yöneltti: kritik veri katmanı sağlayıcıdan bağımsız, hesaplama katmanı ise esnek. Kubernetes tabanlı soyutlama katmanları ve açık standartlar, bu geçişin en önemli taşıyıcıları olarak öne çıkıyor.",
+    date: "2 Eylül 2026",
+    readTime: "7 dk",
+  },
+  {
+    image: gameImg,
+    category: "Oyun Geliştirme",
+    title: "Bağımsız oyun stüdyoları prosedürel üretim araçlarıyla devleşiyor",
+    excerpt:
+      "Beş kişilik ekiplerin yüzlerce saatlik açık dünya içeriği üretebildiği bir döneme girdik. Prosedürel seviye tasarımı ve yapay zeka destekli varlık üretimi, bağımsız stüdyoların en büyük dezavantajı olan içerik hacmini ortadan kaldırıyor. Türkiye'den çıkan bağımsız yapımlar da bu rüzgârla uluslararası platformlarda öne çıkıyor; sektör temsilcileri yaratıcı tasarımın artık bütçeden değil araç hakimiyetinden geçtiğini vurguluyor.",
+    date: "1 Eylül 2026",
+    readTime: "6 dk",
+  },
+  {
+    image: heroImg,
+    category: "Donanım",
+    title: "Çiplet mimarisi işlemci tasarımında yeni bir rekabet alanı açtı",
+    excerpt:
+      "Tek parça dev yongaların yerini lego gibi birleşen çipletler alırken, rekabet transistör yoğunluğundan paketleme teknolojisine kaydı. Farklı üretim düğümlerinde üretilen çekirdek, bellek ve G/Ç chiplerinin tek pakette buluşması, hem maliyeti düşürüyor hem de tasarım esnekliği sağlıyor. Mühendislik ekipleri için bu, bilgisayar mimarisi derslerindeki varsayımların yeniden yazılması anlamına geliyor.",
+    date: "31 Ağustos 2026",
+    readTime: "9 dk",
   },
 ];
 
@@ -198,18 +229,21 @@ function Hero() {
           height={900}
           className="aspect-[16/9] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:aspect-[21/9]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8 lg:p-10">
+        <div className="absolute inset-0 hidden bg-gradient-to-t from-black/85 via-black/45 to-transparent sm:block" />
+        <div className="bg-card p-5 sm:absolute sm:inset-x-0 sm:bottom-0 sm:bg-transparent sm:p-8 lg:p-10">
           <span className="inline-block rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
             Donanım & Altyapı
           </span>
-          <h1 className="mt-3 max-w-3xl font-display text-2xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-3 max-w-3xl font-display text-2xl font-bold leading-tight text-foreground sm:text-4xl sm:text-white lg:text-5xl">
             Türkiye'nin ilk yerli yapay zeka süper bilgisayarı devreye girdi
           </h1>
-          <p className="mt-3 max-w-2xl text-sm text-white/80 sm:text-base">
-            10 petaflop hesaplama gücüyle araştırma merkezlerine hizmet verecek sistem, yerli
-            mühendisler tarafından tasarlanan soğutma mimarisiyle enerji verimliliğinde dünya
-            rekoru kırdı.
+          <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base sm:text-white/80">
+            10 petaflop hesaplama gücüyle üniversitelere ve araştırma merkezlerine hizmet verecek
+            sistem, yerli mühendislerin tasarladığı sıvı soğutma mimarisi sayesinde benzer
+            tesislere kıyasla yüzde 40 daha az enerji tüketiyor. İklim modellemeden ilaç
+            keşfine, büyük dil modeli eğitiminden savunma simülasyonlarına uzanan iş yükleri
+            ilk kez tamamen yerli altyapıda çalıştırılacak. Proje ekibi, sistemin ilk yılında
+            200'den fazla akademik projeye kaynak sağlamasını hedefliyor.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-4">
             <a
@@ -218,7 +252,7 @@ function Hero() {
             >
               Haberi Oku <ArrowRight className="h-4 w-4" />
             </a>
-            <span className="flex items-center gap-1.5 text-xs text-white/70">
+            <span className="flex items-center gap-1.5 text-xs text-muted-foreground sm:text-white/70">
               <CalendarDays className="h-3.5 w-3.5" /> 6 Eylül 2026
               <span className="mx-1">•</span>
               <Clock className="h-3.5 w-3.5" /> 10 dk okuma
@@ -306,6 +340,130 @@ function ArticleGrid() {
   );
 }
 
+const JOBS = [
+  {
+    role: "Kıdemli Backend Mühendisi (Go)",
+    company: "FinTech girişimi",
+    location: "İstanbul / Hibrit",
+  },
+  {
+    role: "Makine Öğrenmesi Mühendisi",
+    company: "Otonom sürüş Ar-Ge merkezi",
+    location: "Ankara",
+  },
+  {
+    role: "DevOps / Platform Mühendisi",
+    company: "E-ticaret teknoloji şirketi",
+    location: "Uzaktan",
+  },
+  {
+    role: "Oyun Programcısı (Unreal Engine)",
+    company: "Bağımsız oyun stüdyosu",
+    location: "İzmir / Uzaktan",
+  },
+];
+
+const EVENTS = [
+  {
+    title: "Türkiye Yapay Zeka Zirvesi 2026",
+    detail: "12-13 Ekim • İstanbul — Üretken yapay zeka, MLOps ve etik oturumları",
+  },
+  {
+    title: "DevFest İstanbul",
+    detail: "24 Ekim • İstanbul — Mobil, web ve bulut atölyeleri",
+  },
+  {
+    title: "Siber Güvenlik CTF Yarışması",
+    detail: "8 Kasım • Çevrim içi — Üniversite takımlarına açık bayrak yakalama etkinliği",
+  },
+  {
+    title: "GameJam TR: 48 Saat Oyun Maratonu",
+    detail: "21 Kasım • Ankara — Bağımsız geliştiriciler için hibrit jam",
+  },
+];
+
+function CareerEvents() {
+  return (
+    <section id="kariyer" className="border-t border-border bg-card/40">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2">
+        <div>
+          <div className="overflow-hidden rounded-xl border border-border">
+            <img
+              src={careerImg}
+              alt="Yazılım mühendisleri beyaz tahta başında mimari diyagram üzerinde çalışıyor"
+              width={800}
+              height={600}
+              loading="lazy"
+              className="aspect-[16/9] w-full object-cover"
+            />
+          </div>
+          <h2 className="mt-5 font-display text-2xl font-bold tracking-tight">
+            Kariyer & İlanlar
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Mühendislik ekiplerinden öne çıkan açık pozisyonlar
+          </p>
+          <ul className="mt-5 divide-y divide-border rounded-xl border border-border bg-card">
+            {JOBS.map((job) => (
+              <li key={job.role}>
+                <a
+                  href="#kariyer"
+                  className="group flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-secondary/60"
+                >
+                  <div>
+                    <p className="text-sm font-semibold group-hover:text-primary">{job.role}</p>
+                    <p className="mt-0.5 text-xs text-muted-foreground">{job.company}</p>
+                  </div>
+                  <span className="shrink-0 rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
+                    {job.location}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div id="etkinlikler">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <img
+              src={eventImg}
+              alt="Teknoloji konferansında dev ekran önünde sunum yapan konuşmacı"
+              width={800}
+              height={600}
+              loading="lazy"
+              className="aspect-[16/9] w-full object-cover"
+            />
+          </div>
+          <h2 className="mt-5 font-display text-2xl font-bold tracking-tight">Etkinlikler</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Takviminize ekleyin: konferanslar, yarışmalar ve buluşmalar
+          </p>
+          <ul className="mt-5 space-y-3">
+            {EVENTS.map((event) => (
+              <li key={event.title}>
+                <a
+                  href="#etkinlikler"
+                  className="group flex items-start gap-4 rounded-xl border border-border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40"
+                >
+                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <CalendarDays className="h-4 w-4" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold group-hover:text-primary">{event.title}</p>
+                    <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+                      {event.detail}
+                    </p>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Newsletter() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "error" | "success">("idle");
@@ -376,7 +534,7 @@ function Footer() {
   ];
 
   return (
-    <footer id="etkinlikler" className="border-t border-border bg-card/50">
+    <footer className="border-t border-border bg-card/50">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
           <a href="/" className="flex items-center gap-2.5">
@@ -434,6 +592,7 @@ function Index() {
       <main>
         <Hero />
         <ArticleGrid />
+        <CareerEvents />
       </main>
       <Footer />
     </div>
