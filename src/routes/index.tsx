@@ -340,6 +340,130 @@ function ArticleGrid() {
   );
 }
 
+const JOBS = [
+  {
+    role: "Kıdemli Backend Mühendisi (Go)",
+    company: "FinTech girişimi",
+    location: "İstanbul / Hibrit",
+  },
+  {
+    role: "Makine Öğrenmesi Mühendisi",
+    company: "Otonom sürüş Ar-Ge merkezi",
+    location: "Ankara",
+  },
+  {
+    role: "DevOps / Platform Mühendisi",
+    company: "E-ticaret teknoloji şirketi",
+    location: "Uzaktan",
+  },
+  {
+    role: "Oyun Programcısı (Unreal Engine)",
+    company: "Bağımsız oyun stüdyosu",
+    location: "İzmir / Uzaktan",
+  },
+];
+
+const EVENTS = [
+  {
+    title: "Türkiye Yapay Zeka Zirvesi 2026",
+    detail: "12-13 Ekim • İstanbul — Üretken yapay zeka, MLOps ve etik oturumları",
+  },
+  {
+    title: "DevFest İstanbul",
+    detail: "24 Ekim • İstanbul — Mobil, web ve bulut atölyeleri",
+  },
+  {
+    title: "Siber Güvenlik CTF Yarışması",
+    detail: "8 Kasım • Çevrim içi — Üniversite takımlarına açık bayrak yakalama etkinliği",
+  },
+  {
+    title: "GameJam TR: 48 Saat Oyun Maratonu",
+    detail: "21 Kasım • Ankara — Bağımsız geliştiriciler için hibrit jam",
+  },
+];
+
+function CareerEvents() {
+  return (
+    <section id="kariyer" className="border-t border-border bg-card/40">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2">
+        <div>
+          <div className="overflow-hidden rounded-xl border border-border">
+            <img
+              src={careerImg}
+              alt="Yazılım mühendisleri beyaz tahta başında mimari diyagram üzerinde çalışıyor"
+              width={800}
+              height={600}
+              loading="lazy"
+              className="aspect-[16/9] w-full object-cover"
+            />
+          </div>
+          <h2 className="mt-5 font-display text-2xl font-bold tracking-tight">
+            Kariyer & İlanlar
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Mühendislik ekiplerinden öne çıkan açık pozisyonlar
+          </p>
+          <ul className="mt-5 divide-y divide-border rounded-xl border border-border bg-card">
+            {JOBS.map((job) => (
+              <li key={job.role}>
+                <a
+                  href="#kariyer"
+                  className="group flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-secondary/60"
+                >
+                  <div>
+                    <p className="text-sm font-semibold group-hover:text-primary">{job.role}</p>
+                    <p className="mt-0.5 text-xs text-muted-foreground">{job.company}</p>
+                  </div>
+                  <span className="shrink-0 rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
+                    {job.location}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div id="etkinlikler">
+          <div className="overflow-hidden rounded-xl border border-border">
+            <img
+              src={eventImg}
+              alt="Teknoloji konferansında dev ekran önünde sunum yapan konuşmacı"
+              width={800}
+              height={600}
+              loading="lazy"
+              className="aspect-[16/9] w-full object-cover"
+            />
+          </div>
+          <h2 className="mt-5 font-display text-2xl font-bold tracking-tight">Etkinlikler</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Takviminize ekleyin: konferanslar, yarışmalar ve buluşmalar
+          </p>
+          <ul className="mt-5 space-y-3">
+            {EVENTS.map((event) => (
+              <li key={event.title}>
+                <a
+                  href="#etkinlikler"
+                  className="group flex items-start gap-4 rounded-xl border border-border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40"
+                >
+                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <CalendarDays className="h-4 w-4" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold group-hover:text-primary">{event.title}</p>
+                    <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+                      {event.detail}
+                    </p>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Newsletter() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "error" | "success">("idle");
