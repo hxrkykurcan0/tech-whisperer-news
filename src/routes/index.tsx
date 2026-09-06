@@ -534,7 +534,7 @@ function Footer() {
   ];
 
   return (
-    <footer id="etkinlikler" className="border-t border-border bg-card/50">
+    <footer className="border-t border-border bg-card/50">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
           <a href="/" className="flex items-center gap-2.5">
@@ -592,6 +592,7 @@ function Index() {
       <main>
         <Hero />
         <ArticleGrid />
+        <CareerEvents />
       </main>
       <Footer />
     </div>
