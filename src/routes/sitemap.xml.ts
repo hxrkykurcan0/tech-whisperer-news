@@ -4,7 +4,7 @@ import { sitemapStaticPaths, sitemapXML, type SitemapEntry } from "@/lib/sitemap
 
 const BASE_URL = "https://tech-whisperer-news.lovable.app";
 
-export const Route = createFileRoute("/sitemap.xml")({
+export const Route = createFileRoute("/sitemap/xml")({
   staticData: { sitemap: false },
   server: {
     handlers: {
