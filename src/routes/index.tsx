@@ -198,7 +198,7 @@ function Hero() {
           height={900}
           className="aspect-[16/9] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:aspect-[21/9]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8 lg:p-10">
           <span className="inline-block rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
             Donanım & Altyapı
