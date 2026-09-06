@@ -238,9 +238,12 @@ function Hero() {
             Türkiye'nin ilk yerli yapay zeka süper bilgisayarı devreye girdi
           </h1>
           <p className="mt-3 max-w-2xl text-sm text-white/80 sm:text-base">
-            10 petaflop hesaplama gücüyle araştırma merkezlerine hizmet verecek sistem, yerli
-            mühendisler tarafından tasarlanan soğutma mimarisiyle enerji verimliliğinde dünya
-            rekoru kırdı.
+            10 petaflop hesaplama gücüyle üniversitelere ve araştırma merkezlerine hizmet verecek
+            sistem, yerli mühendislerin tasarladığı sıvı soğutma mimarisi sayesinde benzer
+            tesislere kıyasla yüzde 40 daha az enerji tüketiyor. İklim modellemeden ilaç
+            keşfine, büyük dil modeli eğitiminden savunma simülasyonlarına uzanan iş yükleri
+            ilk kez tamamen yerli altyapıda çalıştırılacak. Proje ekibi, sistemin ilk yılında
+            200'den fazla akademik projeye kaynak sağlamasını hedefliyor.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-4">
             <a
