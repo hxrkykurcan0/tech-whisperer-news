@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://tech-whisperer-news.lovable.app/sitemap.xml

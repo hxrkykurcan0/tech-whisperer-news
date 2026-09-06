@@ -31,6 +31,7 @@ import careerImg from "@/assets/news-career.jpg";
 import eventImg from "@/assets/news-event.jpg";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "BitGündem — Bilgisayar Mühendisliği Haberleri" },
