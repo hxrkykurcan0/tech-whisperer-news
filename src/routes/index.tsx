@@ -229,15 +229,15 @@ function Hero() {
           height={900}
           className="aspect-[16/9] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:aspect-[21/9]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8 lg:p-10">
+        <div className="absolute inset-0 hidden bg-gradient-to-t from-black/85 via-black/45 to-transparent sm:block" />
+        <div className="bg-card p-5 sm:absolute sm:inset-x-0 sm:bottom-0 sm:bg-transparent sm:p-8 lg:p-10">
           <span className="inline-block rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
             Donanım & Altyapı
           </span>
-          <h1 className="mt-3 max-w-3xl font-display text-2xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-3 max-w-3xl font-display text-2xl font-bold leading-tight text-foreground sm:text-4xl sm:text-white lg:text-5xl">
             Türkiye'nin ilk yerli yapay zeka süper bilgisayarı devreye girdi
           </h1>
-          <p className="mt-3 max-w-2xl text-sm text-white/80 sm:text-base">
+          <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base sm:text-white/80">
             10 petaflop hesaplama gücüyle üniversitelere ve araştırma merkezlerine hizmet verecek
             sistem, yerli mühendislerin tasarladığı sıvı soğutma mimarisi sayesinde benzer
             tesislere kıyasla yüzde 40 daha az enerji tüketiyor. İklim modellemeden ilaç
@@ -252,7 +252,7 @@ function Hero() {
             >
               Haberi Oku <ArrowRight className="h-4 w-4" />
             </a>
-            <span className="flex items-center gap-1.5 text-xs text-white/70">
+            <span className="flex items-center gap-1.5 text-xs text-muted-foreground sm:text-white/70">
               <CalendarDays className="h-3.5 w-3.5" /> 6 Eylül 2026
               <span className="mx-1">•</span>
               <Clock className="h-3.5 w-3.5" /> 10 dk okuma
