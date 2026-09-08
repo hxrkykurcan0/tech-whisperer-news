@@ -18,8 +18,10 @@ import { CATEGORIES } from "@/lib/articles";
 export const NAV_ITEMS = [
   { label: "Haberler", href: "/#haberler" },
   { label: "Yazılım & Yapay Zeka", href: "/kategori/yapay-zeka" },
+  { label: "Mühendislik Dalları", href: "/muhendislik-dallari" },
   { label: "Kariyer & İlanlar", href: "/#kariyer" },
   { label: "Etkinlikler", href: "/#etkinlikler" },
+  { label: "Hakkımda", href: "/hakkimda" },
 ];
 
 export function useTheme() {
