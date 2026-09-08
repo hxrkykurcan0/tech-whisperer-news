@@ -227,6 +227,16 @@ export function SiteFooter() {
               </li>
             ))}
             <li>
+              <Link to="/muhendislik-dallari" className="transition-colors hover:text-primary">
+                Mühendislik Dalları
+              </Link>
+            </li>
+            <li>
+              <Link to="/hakkimda" className="transition-colors hover:text-primary">
+                Hakkımda
+              </Link>
+            </li>
+            <li>
               <Link to="/admin" className="transition-colors hover:text-primary">
                 Haber Ekle (Yönetim)
               </Link>
