@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as HakkimdaRouteImport } from './routes/hakkimda'
+import { Route as MuhendislikDallariRouteImport } from './routes/muhendislik-dallari'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as HaberSlugRouteImport } from './routes/haber.$slug'
 import { Route as KategoriSlugRouteImport } from './routes/kategori.$slug'
@@ -23,6 +25,16 @@ const IndexRoute = IndexRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HakkimdaRoute = HakkimdaRouteImport.update({
+  id: '/hakkimda',
+  path: '/hakkimda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MuhendislikDallariRoute = MuhendislikDallariRouteImport.update({
+  id: '/muhendislik-dallari',
+  path: '/muhendislik-dallari',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -44,6 +56,8 @@ const KategoriSlugRoute = KategoriSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/hakkimda': typeof HakkimdaRoute
+  '/muhendislik-dallari': typeof MuhendislikDallariRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/haber/$slug': typeof HaberSlugRoute
   '/kategori/$slug': typeof KategoriSlugRoute
@@ -51,6 +65,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/hakkimda': typeof HakkimdaRoute
+  '/muhendislik-dallari': typeof MuhendislikDallariRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/haber/$slug': typeof HaberSlugRoute
   '/kategori/$slug': typeof KategoriSlugRoute
@@ -59,6 +75,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/hakkimda': typeof HakkimdaRoute
+  '/muhendislik-dallari': typeof MuhendislikDallariRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/haber/$slug': typeof HaberSlugRoute
   '/kategori/$slug': typeof KategoriSlugRoute
@@ -66,13 +84,28 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/admin' | '/sitemap.xml' | '/haber/$slug' | '/kategori/$slug'
+    | '/'
+    | '/admin'
+    | '/hakkimda'
+    | '/muhendislik-dallari'
+    | '/sitemap.xml'
+    | '/haber/$slug'
+    | '/kategori/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/sitemap.xml' | '/haber/$slug' | '/kategori/$slug'
+  to:
+    | '/'
+    | '/admin'
+    | '/hakkimda'
+    | '/muhendislik-dallari'
+    | '/sitemap.xml'
+    | '/haber/$slug'
+    | '/kategori/$slug'
   id:
     | '__root__'
     | '/'
     | '/admin'
+    | '/hakkimda'
+    | '/muhendislik-dallari'
     | '/sitemap.xml'
     | '/haber/$slug'
     | '/kategori/$slug'
@@ -81,6 +114,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  HakkimdaRoute: typeof HakkimdaRoute
+  MuhendislikDallariRoute: typeof MuhendislikDallariRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   HaberSlugRoute: typeof HaberSlugRoute
   KategoriSlugRoute: typeof KategoriSlugRoute
@@ -100,6 +135,20 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hakkimda': {
+      id: '/hakkimda'
+      path: '/hakkimda'
+      fullPath: '/hakkimda'
+      preLoaderRoute: typeof HakkimdaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/muhendislik-dallari': {
+      id: '/muhendislik-dallari'
+      path: '/muhendislik-dallari'
+      fullPath: '/muhendislik-dallari'
+      preLoaderRoute: typeof MuhendislikDallariRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -129,6 +178,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  HakkimdaRoute: HakkimdaRoute,
+  MuhendislikDallariRoute: MuhendislikDallariRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   HaberSlugRoute: HaberSlugRoute,
   KategoriSlugRoute: KategoriSlugRoute,

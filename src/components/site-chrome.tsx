@@ -18,8 +18,10 @@ import { CATEGORIES } from "@/lib/articles";
 export const NAV_ITEMS = [
   { label: "Haberler", href: "/#haberler" },
   { label: "Yazılım & Yapay Zeka", href: "/kategori/yapay-zeka" },
+  { label: "Mühendislik Dalları", href: "/muhendislik-dallari" },
   { label: "Kariyer & İlanlar", href: "/#kariyer" },
   { label: "Etkinlikler", href: "/#etkinlikler" },
+  { label: "Hakkımda", href: "/hakkimda" },
 ];
 
 export function useTheme() {
@@ -224,6 +226,16 @@ export function SiteFooter() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link to="/muhendislik-dallari" className="transition-colors hover:text-primary">
+                Mühendislik Dalları
+              </Link>
+            </li>
+            <li>
+              <Link to="/hakkimda" className="transition-colors hover:text-primary">
+                Hakkımda
+              </Link>
+            </li>
             <li>
               <Link to="/admin" className="transition-colors hover:text-primary">
                 Haber Ekle (Yönetim)
