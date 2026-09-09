@@ -16,12 +16,12 @@ export const Route = createFileRoute("/haber/$slug")({
   head: ({ loaderData }) => {
     const article = loaderData?.article;
     if (!article) {
-      return { meta: [{ title: "Haber — BitGündem" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Haber — BigKod" }, { name: "robots", content: "noindex" }] };
     }
     const description = article.excerpt.slice(0, 155);
     return {
       meta: [
-        { title: `${article.title} — BitGündem` },
+        { title: `${article.title} — BigKod` },
         { name: "description", content: description },
         { property: "og:title", content: article.title },
         { property: "og:description", content: description },

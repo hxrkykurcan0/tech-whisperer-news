@@ -124,7 +124,7 @@ export const ARTICLES: Article[] = [
       "7-13 milyar parametreli modellerin tek bir GPU'da saniyede yüzlerce token üretebilmesi, kurumların veri gizliliği kaygısıyla buluta gönderemediği iş yüklerini yeniden şirket içine taşıyor. Bankacılıktan sağlığa uzanan sektörlerde, ince ayar yapılmış küçük modeller artık genel amaçlı dev modellerle başa baş sonuç veriyor.",
     date: "5 Eylül 2026",
     readTime: "6 dk",
-    author: "BitGündem Araştırma Ekibi",
+    author: "BigKod Araştırma Ekibi",
     body: [
       "Kurumsal yapay zeka pazarında dengeler değişiyor. İki yıl önce 'en büyük model en iyi modeldir' varsayımıyla hareket eden şirketler, bugün tam tersi yönde bir strateji izliyor: işe özel, küçük ve şirket içinde çalışan modeller. 7 ile 13 milyar parametre aralığındaki modellerin modern tüketici sınıfı GPU'larda saniyede yüzlerce token üretebilmesi, bu dönüşümün teknik temelini oluşturuyor.",
       "Dönüşümün arkasındaki en güçlü itici güç veri gizliliği. Bankacılık ve sağlık gibi düzenlemeye tabi sektörlerde çalışan kurumlar, müşteri verilerini üçüncü taraf API'lere göndermekten kaçınıyor. KVKK ve GDPR uyum süreçleri, bulut tabanlı genel amaçlı modellerin önüne ciddi engeller çıkarırken; şirket içi sunucularda çalışan açık ağırlıklı modeller bu engeli ortadan kaldırıyor.",
@@ -150,7 +150,7 @@ export const ARTICLES: Article[] = [
       "Bellek güvenliği artık bir tercih değil, kamu ihalelerinde dahi aranan bir şart haline geldi. Rust, çekirdek bileşenlerde ve güvenlik açısından kritik yollarda standart olurken; Go, hızlı geliştirme döngüsü ve sade sözdizimiyle mikroservis dünyasındaki tahtını koruyor.",
     date: "4 Eylül 2026",
     readTime: "8 dk",
-    author: "BitGündem Araştırma Ekibi",
+    author: "BigKod Araştırma Ekibi",
     body: [
       "Sistem programlama dünyasında yıllardır süren 'Rust mı, Go mu?' tartışması 2026 itibarıyla ideolojik bir kavgadan çıkıp pragmatik bir iş bölümüne dönüştü. Büyük ölçekli altyapı ekipleri, iki dili birbirinin rakibi değil tamamlayıcısı olarak konumlandırıyor: performans ve güvenlik kritik katmanda Rust, iş mantığı ve orkestrasyon katmanında Go.",
       "Rust'ın yükselişinin arkasında düzenleyici baskı var. Bellek güvenliği, ulusal güvenlik kurumlarının yayınladığı rehberlerle kamu ihalelerinde dahi aranan bir şart haline geldi. Linux çekirdeğinden Windows sürücülerine kadar kritik kod tabanlarında Rust'ın kabul görmesi, dilin artık 'hobi projesi' algısından tamamen çıktığını gösteriyor. Tarayıcı motorları, veritabanı çekirdekleri ve ağ proxy'leri gibi performansın ölçülebilir para ettiği alanlarda Rust fiilen standart oldu.",
@@ -176,7 +176,7 @@ export const ARTICLES: Article[] = [
       "Kimlik avı saldırılarının yapay zeka ile kişiselleşmesi, küçük ekipleri de kurumsal düzeyde savunma arayışına itti. Yeni nesil kimlik ve erişim yönetimi araçları, donanım anahtarlı doğrulama ve cihaz bazlı güven politikalarını dakikalar içinde kurulabilen paketlere dönüştürdü.",
     date: "3 Eylül 2026",
     readTime: "5 dk",
-    author: "BitGündem Araştırma Ekibi",
+    author: "BigKod Araştırma Ekibi",
     body: [
       "Sıfır güven mimarisi, beş yıl önce yalnızca büyük bankaların ve teknoloji devlerinin karşılayabildiği bir yaklaşımdı. Bugün ise 20 kişilik bir yazılım şirketi, donanım anahtarlı doğrulama ve cihaz bazlı erişim politikalarını bir öğleden sonra içinde devreye alabiliyor. Yeni nesil kimlik ve erişim yönetimi araçları, karmaşık sıfır güven bileşenlerini abonelik bazlı, dakikalar içinde kurulan paketlere dönüştürdü.",
       "Bu dönüşümü zorunlu kılan gelişme, saldırıların demokratikleşmesi. Üretken yapay zeka araçları, kimlik avı mesajlarını hedef kişinin diline, üslubuna ve çalıştığı projelere göre kişiselleştirebiliyor. Artık kötü yazılmış, hemen fark edilen sahte e-postalar devri kapandı; küçük ekipler de gelişmiş tehdit aktörlerinin hedef listesinde.",
@@ -202,7 +202,7 @@ export const ARTICLES: Article[] = [
       "Şirketler, tek sağlayıcıya bağımlılığın faturasını kesinti günlerinde ödediğini fark etti. Ancak çoklu bulutun getirdiği operasyonel karmaşa, platform mühendisliği ekiplerini yeni bir denge arayışına yöneltti: kritik veri katmanı sağlayıcıdan bağımsız, hesaplama katmanı ise esnek.",
     date: "2 Eylül 2026",
     readTime: "7 dk",
-    author: "BitGündem Araştırma Ekibi",
+    author: "BigKod Araştırma Ekibi",
     body: [
       "Çoklu bulut, birkaç yıl önce 'her şeyi iki sağlayıcıda çalıştırma' hayaliyle başlayan ancak operasyonel maliyetiyle birçok ekibi yıldıran bir stratejiydi. 2026'da ise daha olgun bir tanıma kavuştu: kritik veri katmanı sağlayıcıdan bağımsız tutulur, hesaplama katmanı ise ihtiyaca göre esnek biçimde dağıtılır.",
       "Bu olgunlaşmanın arkasında kesinti günlerinde ödenen faturalar var. Son iki yılda yaşanan büyük sağlayıcı kesintileri, tek buluta bağımlı şirketlerin saatlik zararlarını gündeme taşıdı. Yönetim kurulları artık 'nasılsa çalışıyor' cevabını kabul etmiyor; iş sürekliliği planlarında çoklu bölge ve çoklu sağlayıcı senaryoları zorunlu hale geliyor.",
@@ -228,7 +228,7 @@ export const ARTICLES: Article[] = [
       "Beş kişilik ekiplerin yüzlerce saatlik açık dünya içeriği üretebildiği bir döneme girdik. Prosedürel seviye tasarımı ve yapay zeka destekli varlık üretimi, bağımsız stüdyoların en büyük dezavantajı olan içerik hacmini ortadan kaldırıyor. Türkiye'den çıkan bağımsız yapımlar da bu rüzgârla uluslararası platformlarda öne çıkıyor.",
     date: "1 Eylül 2026",
     readTime: "6 dk",
-    author: "BitGündem Araştırma Ekibi",
+    author: "BigKod Araştırma Ekibi",
     body: [
       "Bağımsız oyun geliştirmenin en büyük duvarı her zaman içerik hacmiydi: büyük stüdyolar yüzlerce sanatçıyla devasa dünyalar inşa ederken, beş kişilik ekipler ancak birkaç saatlik deneyim üretebiliyordu. Prosedürel üretim araçlarının olgunlaşması bu duvarı yıkıyor. Bugün küçük bir ekip, algoritmik seviye tasarımı ve yapay zeka destekli varlık üretimiyle yüzlerce saatlik açık dünya içeriği oluşturabiliyor.",
       "Teknik temelde birkaç gelişme bir araya geldi. Prosedürel içerik üretimi artık rastgele labirentler üretmekten ibaret değil; kural tabanlı sistemler, el yapımı kaliteye yaklaşan yapılar, araziler ve görev zincirleri oluşturabiliyor. Tasarımcılar 'ne üretileceğini' değil, 'üretim kurallarını' tasarlıyor; bu da küçük ekiplerin yaratıcı enerjisini doğrudan ölçeklendiriyor.",
@@ -254,7 +254,7 @@ export const ARTICLES: Article[] = [
       "Tek parça dev yongaların yerini lego gibi birleşen çipletler alırken, rekabet transistör yoğunluğundan paketleme teknolojisine kaydı. Farklı üretim düğümlerinde üretilen çekirdek, bellek ve G/Ç chiplerinin tek pakette buluşması, hem maliyeti düşürüyor hem de tasarım esnekliği sağlıyor.",
     date: "31 Ağustos 2026",
     readTime: "9 dk",
-    author: "BitGündem Araştırma Ekibi",
+    author: "BigKod Araştırma Ekibi",
     body: [
       "Yarı iletken endüstrisinde onlarca yıldır geçerli olan oyun kuralı değişti: artık kazanan, en küçük transistörü üreten değil; en akıllı paketlemeyi yapan oluyor. Çiplet mimarisi, tek parça dev yongaların yerini lego benzeri birleşen küçük yongalara bırakmasıyla, rekabeti transistör yoğunluğundan paketleme teknolojisine taşıdı.",
       "Yaklaşımın mantığı basit ama etkisi devrimsel. Monolitik tasarımda çekirdekler, bellek denetleyicileri ve G/Ç birimleri tek bir silikon parçasında, aynı üretim düğümüyle üretilmek zorundaydı. Çiplet dünyasında ise işlem çekirdekleri en ileri düğümde, G/Ç ve bellek denetleyicileri daha eski ve ucuz düğümlerde üretilebiliyor; hepsi ileri paketleme teknikleriyle tek bir yonga gibi çalışıyor.",
@@ -280,7 +280,7 @@ export const ARTICLES: Article[] = [
       "10 petaflop hesaplama gücüyle üniversitelere ve araştırma merkezlerine hizmet verecek sistem, yerli mühendislerin tasarladığı sıvı soğutma mimarisi sayesinde benzer tesislere kıyasla yüzde 40 daha az enerji tüketiyor.",
     date: "6 Eylül 2026",
     readTime: "10 dk",
-    author: "BitGündem Araştırma Ekibi",
+    author: "BigKod Araştırma Ekibi",
     body: [
       "Türkiye'nin yüksek başarımlı hesaplama alanındaki en büyük yatırımı devreye girdi. 10 petaflop hesaplama gücüne sahip sistem; iklim modellemeden ilaç keşfine, büyük dil modeli eğitiminden savunma simülasyonlarına uzanan iş yüklerini ilk kez tamamen yerli altyapıda çalıştıracak.",
       "Tesisin en dikkat çekici özelliği, yerli mühendislerin tasarladığı doğrudan sıvı soğutma mimarisi. Sıvının doğrudan işlemcilerin üzerinden geçirildiği bu tasarım, geleneksel hava soğutmalı veri merkezlerine kıyasla yüzde 40 daha az enerji tüketiyor. PUE değeri 1,1'in altına inen tesis, Avrupa'daki en verimli akademik veri merkezleriyle aynı ligde yer alıyor. Soğutma suyunun ısısı ayrıca kampüs ısıtma sisteminde geri kullanılıyor.",

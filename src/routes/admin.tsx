@@ -15,12 +15,12 @@ export const Route = createFileRoute("/admin")({
   staticData: { sitemap: false },
   head: () => ({
     meta: [
-      { title: "Haber Ekle — BitGündem Yönetim" },
+      { title: "Haber Ekle — BigKod Yönetim" },
       {
         name: "description",
-        content: "BitGündem yönetim ekranı: kategori, başlık, metin ve görsel ile yeni haber ekleyin.",
+        content: "BigKod yönetim ekranı: kategori, başlık, metin ve görsel ile yeni haber ekleyin.",
       },
-      { property: "og:title", content: "Haber Ekle — BitGündem Yönetim" },
+      { property: "og:title", content: "Haber Ekle — BigKod Yönetim" },
       {
         property: "og:description",
         content: "Kendi haberlerinizi kategori, başlık, metin ve görselle yayınlayın.",

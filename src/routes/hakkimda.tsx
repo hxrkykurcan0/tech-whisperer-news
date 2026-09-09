@@ -7,16 +7,16 @@ export const Route = createFileRoute("/hakkimda")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Hakkımda — Ali Haydar Kurçan | BitGündem" },
+      { title: "Hakkımda — Ali Haydar Kurçan | BigKod" },
       {
         name: "description",
         content:
-          "BitGündem'i hazırlayan Ali Haydar Kurçan: bilgisayar mühendisliği okumak isteyen bir lise öğrencisinin teknoloji yolculuğu.",
+          "BigKod'i hazırlayan Ali Haydar Kurçan: bilgisayar mühendisliği okumak isteyen bir lise öğrencisinin teknoloji yolculuğu.",
       },
-      { property: "og:title", content: "Hakkımda — Ali Haydar Kurçan | BitGündem" },
+      { property: "og:title", content: "Hakkımda — Ali Haydar Kurçan | BigKod" },
       {
         property: "og:description",
-        content: "BitGündem'in kurucusu Ali Haydar Kurçan hakkında.",
+        content: "BigKod'in kurucusu Ali Haydar Kurçan hakkında.",
       },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -48,7 +48,7 @@ function AboutPage() {
             </span>
             <div>
               <p className="font-display text-xl font-semibold">Ali Haydar Kurçan</p>
-              <p className="text-sm text-muted-foreground">Lise öğrencisi • BitGündem kurucusu</p>
+              <p className="text-sm text-muted-foreground">Lise öğrencisi • BigKod kurucusu</p>
             </div>
           </div>
 
@@ -58,7 +58,7 @@ function AboutPage() {
           </p>
 
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            BitGündem'i, teknolojiye ilgi duyan öğrencilerin yazılım, yapay zeka, siber güvenlik ve
+            BigKod'i, teknolojiye ilgi duyan öğrencilerin yazılım, yapay zeka, siber güvenlik ve
             donanım dünyasındaki gelişmeleri sade bir Türkçeyle takip edebilmesi için hazırlıyorum.
             Amacım hem kendi öğrenme sürecimi belgelemek hem de aynı yolda ilerlemek isteyenlere
             derli toplu bir kaynak sunmak.

@@ -15,10 +15,10 @@ export const Route = createFileRoute("/kategori/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Kategori bulunamadı — BitGündem" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Kategori bulunamadı — BigKod" }, { name: "robots", content: "noindex" }] };
     }
     const { category } = loaderData;
-    const title = `${category.name} Haberleri — BitGündem`;
+    const title = `${category.name} Haberleri — BigKod`;
     const description = category.description.slice(0, 155);
     return {
       meta: [

@@ -78,13 +78,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "BitGündem — Bilgisayar Mühendisliği Haberleri" },
+      { title: "BigKod — Bilgisayar Mühendisliği Haberleri" },
       {
         name: "description",
         content:
           "Bilgisayar mühendisliği dünyasından güncel haberler, yazılım ve yapay zeka analizleri, kariyer fırsatları ve etkinlikler.",
       },
-      { property: "og:title", content: "BitGündem — Bilgisayar Mühendisliği Haberleri" },
+      { property: "og:title", content: "BigKod — Bilgisayar Mühendisliği Haberleri" },
       {
         property: "og:description",
         content:
