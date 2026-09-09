@@ -19,6 +19,7 @@ export const NAV_ITEMS = [
   { label: "Haberler", href: "/#haberler" },
   { label: "Yazılım & Yapay Zeka", href: "/kategori/yapay-zeka" },
   { label: "Mühendislik Dalları", href: "/muhendislik-dallari" },
+  { label: "Yazılım Dilleri", href: "/yazilim-dilleri" },
   { label: "Kariyer & İlanlar", href: "/#kariyer" },
   { label: "Etkinlikler", href: "/#etkinlikler" },
   { label: "Hakkımda", href: "/hakkimda" },
@@ -229,6 +230,11 @@ export function SiteFooter() {
             <li>
               <Link to="/muhendislik-dallari" className="transition-colors hover:text-primary">
                 Mühendislik Dalları
+              </Link>
+            </li>
+            <li>
+              <Link to="/yazilim-dilleri" className="transition-colors hover:text-primary">
+                Yazılım Dilleri
               </Link>
             </li>
             <li>
