@@ -23,13 +23,13 @@ export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "BitGündem — Bilgisayar Mühendisliği Haberleri" },
+      { title: "BigKod — Bilgisayar Mühendisliği Haberleri" },
       {
         name: "description",
         content:
           "Bilgisayar mühendisliği dünyasından güncel haberler, yazılım ve yapay zeka analizleri, mühendislik dalları rehberi, kariyer fırsatları ve etkinlikler.",
       },
-      { property: "og:title", content: "BitGündem — Bilgisayar Mühendisliği Haberleri" },
+      { property: "og:title", content: "BigKod — Bilgisayar Mühendisliği Haberleri" },
       {
         property: "og:description",
         content:

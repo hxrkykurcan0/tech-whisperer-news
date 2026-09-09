@@ -86,13 +86,13 @@ export const Route = createFileRoute("/muhendislik-dallari")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Mühendislik Dalları Rehberi — BitGündem" },
+      { title: "Mühendislik Dalları Rehberi — BigKod" },
       {
         name: "description",
         content:
           "Bilgisayar, yazılım, yapay zeka, elektrik-elektronik, makine, endüstri ve diğer mühendislik dalları: ne iş yaparlar, hangi alanlarda çalışırlar?",
       },
-      { property: "og:title", content: "Mühendislik Dalları Rehberi — BitGündem" },
+      { property: "og:title", content: "Mühendislik Dalları Rehberi — BigKod" },
       {
         property: "og:description",
         content: "Tüm mühendislik dallarının çalışma alanları ve detaylı açıklamaları.",
