@@ -133,6 +133,13 @@ function CategoryPage() {
                     <Clock className="h-3.5 w-3.5" /> {article.readTime}
                   </span>
                 </div>
+                <Link
+                  to="/haber/$slug"
+                  params={{ slug: article.slug }}
+                  className="mt-4 inline-flex items-center justify-center gap-2 rounded-lg border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                >
+                  Detay <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </article>
           ))}
