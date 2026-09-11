@@ -17,6 +17,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as YazilimDilleriRouteImport } from './routes/yazilim-dilleri'
 import { Route as HaberSlugRouteImport } from './routes/haber.$slug'
 import { Route as KategoriSlugRouteImport } from './routes/kategori.$slug'
+import { Route as ApiPublicGorselSplatRouteImport } from './routes/api/public/gorsel/$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +59,11 @@ const KategoriSlugRoute = KategoriSlugRouteImport.update({
   path: '/kategori/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicGorselSplatRoute = ApiPublicGorselSplatRouteImport.update({
+  id: '/api/public/gorsel/$',
+  path: '/api/public/gorsel/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/yazilim-dilleri': typeof YazilimDilleriRoute
   '/haber/$slug': typeof HaberSlugRoute
   '/kategori/$slug': typeof KategoriSlugRoute
+  '/api/public/gorsel/$': typeof ApiPublicGorselSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/yazilim-dilleri': typeof YazilimDilleriRoute
   '/haber/$slug': typeof HaberSlugRoute
   '/kategori/$slug': typeof KategoriSlugRoute
+  '/api/public/gorsel/$': typeof ApiPublicGorselSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/yazilim-dilleri': typeof YazilimDilleriRoute
   '/haber/$slug': typeof HaberSlugRoute
   '/kategori/$slug': typeof KategoriSlugRoute
+  '/api/public/gorsel/$': typeof ApiPublicGorselSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/yazilim-dilleri'
     | '/haber/$slug'
     | '/kategori/$slug'
+    | '/api/public/gorsel/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/yazilim-dilleri'
     | '/haber/$slug'
     | '/kategori/$slug'
+    | '/api/public/gorsel/$'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/yazilim-dilleri'
     | '/haber/$slug'
     | '/kategori/$slug'
+    | '/api/public/gorsel/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +144,7 @@ export interface RootRouteChildren {
   YazilimDilleriRoute: typeof YazilimDilleriRoute
   HaberSlugRoute: typeof HaberSlugRoute
   KategoriSlugRoute: typeof KategoriSlugRoute
+  ApiPublicGorselSplatRoute: typeof ApiPublicGorselSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KategoriSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/gorsel/$': {
+      id: '/api/public/gorsel/$'
+      path: '/api/public/gorsel/$'
+      fullPath: '/api/public/gorsel/$'
+      preLoaderRoute: typeof ApiPublicGorselSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,6 +224,7 @@ const rootRouteChildren: RootRouteChildren = {
   YazilimDilleriRoute: YazilimDilleriRoute,
   HaberSlugRoute: HaberSlugRoute,
   KategoriSlugRoute: KategoriSlugRoute,
+  ApiPublicGorselSplatRoute: ApiPublicGorselSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
