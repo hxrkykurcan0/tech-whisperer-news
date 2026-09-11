@@ -1,15 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ImagePlus, Plus, Trash2 } from "lucide-react";
+import { ImagePlus, Loader2, Plus, Trash2 } from "lucide-react";
 
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
-import { CATEGORIES } from "@/lib/articles";
+import { CATEGORIES, type Article } from "@/lib/articles";
 import {
-  loadLocalArticles,
-  saveLocalArticles,
-  slugify,
-  type LocalArticle,
-} from "@/lib/local-articles";
+  createDbArticle,
+  deleteDbArticle,
+  listDbArticles,
+} from "@/lib/db-articles.functions";
 
 export const Route = createFileRoute("/admin")({
   staticData: { sitemap: false },
@@ -33,65 +32,121 @@ export const Route = createFileRoute("/admin")({
   component: AdminPage,
 });
 
-const MAX_IMAGE_BYTES = 1_500_000;
+const MAX_IMAGE_BYTES = 4_500_000;
+
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(",")[1] ?? "");
+    reader.onerror = () => reject(new Error("Dosya okunamadı"));
+    reader.readAsDataURL(file);
+  });
+}
 
 function AdminPage() {
-  const [items, setItems] = useState<LocalArticle[]>([]);
+  const [password, setPassword] = useState("");
+  const [items, setItems] = useState<Article[]>([]);
   const [categorySlug, setCategorySlug] = useState(CATEGORIES[0]!.slug);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [image, setImage] = useState("");
+  const [preview, setPreview] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<{ type: "ok" | "error"; text: string } | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setItems(loadLocalArticles());
+    setPassword(sessionStorage.getItem("bigkod:admin") ?? "");
+    void refresh();
   }, []);
 
-  const persist = (next: LocalArticle[]) => {
-    setItems(next);
-    saveLocalArticles(next);
+  const refresh = async () => {
+    const list = await listDbArticles();
+    setItems(list);
   };
 
-  const onFile = (file: File | undefined) => {
-    if (!file) return;
-    if (!file.type.startsWith("image/")) {
+  const onFile = (selected: File | undefined) => {
+    if (!selected) return;
+    if (!selected.type.startsWith("image/")) {
       setMessage({ type: "error", text: "Lütfen bir görsel dosyası seçin." });
       return;
     }
-    if (file.size > MAX_IMAGE_BYTES) {
-      setMessage({ type: "error", text: "Görsel en fazla 1,5 MB olabilir." });
+    if (selected.size > MAX_IMAGE_BYTES) {
+      setMessage({ type: "error", text: "Görsel en fazla 4,5 MB olabilir." });
       return;
     }
+    setFile(selected);
     const reader = new FileReader();
-    reader.onload = () => setImage(String(reader.result));
-    reader.readAsDataURL(file);
+    reader.onload = () => setPreview(String(reader.result));
+    reader.readAsDataURL(selected);
   };
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const cleanTitle = title.trim();
     const cleanText = text.trim();
+    if (!password) {
+      setMessage({ type: "error", text: "Önce yönetim şifrenizi girin." });
+      return;
+    }
     if (cleanTitle.length < 5 || cleanText.length < 30) {
       setMessage({ type: "error", text: "Başlık en az 5, metin en az 30 karakter olmalı." });
       return;
     }
-    const base = slugify(cleanTitle) || "haber";
-    const slug = items.some((i) => i.slug === base) ? `${base}-${Date.now().toString(36)}` : base;
-    const article: LocalArticle = {
-      slug,
-      categorySlug,
-      title: cleanTitle,
-      body: cleanText.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean),
-      image: image || "/favicon.ico",
-      date: new Date().toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" }),
-    };
-    persist([article, ...items]);
-    setTitle("");
-    setText("");
-    setImage("");
-    if (fileRef.current) fileRef.current.value = "";
-    setMessage({ type: "ok", text: "Haber yayınlandı. Ana sayfada ve kategorisinde görünüyor." });
+    setBusy(true);
+    setMessage(null);
+    try {
+      const imageBase64 = file ? await fileToBase64(file) : null;
+      await createDbArticle({
+        data: {
+          password,
+          categorySlug,
+          title: cleanTitle,
+          text: cleanText,
+          imageBase64,
+          imageName: file?.name ?? null,
+          imageType: file?.type ?? null,
+        },
+      });
+      sessionStorage.setItem("bigkod:admin", password);
+      setTitle("");
+      setText("");
+      setPreview("");
+      setFile(null);
+      if (fileRef.current) fileRef.current.value = "";
+      await refresh();
+      setMessage({
+        type: "ok",
+        text: "Haber yayınlandı. Sitede herkese açık ve site haritasına eklendi.",
+      });
+    } catch (error) {
+      setMessage({
+        type: "error",
+        text: error instanceof Error ? error.message : "Haber kaydedilemedi.",
+      });
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const onDelete = async (slug: string) => {
+    if (!password) {
+      setMessage({ type: "error", text: "Önce yönetim şifrenizi girin." });
+      return;
+    }
+    setBusy(true);
+    try {
+      await deleteDbArticle({ data: { password, slug } });
+      await refresh();
+      setMessage({ type: "ok", text: "Haber silindi." });
+    } catch (error) {
+      setMessage({
+        type: "error",
+        text: error instanceof Error ? error.message : "Haber silinemedi.",
+      });
+    } finally {
+      setBusy(false);
+    }
   };
 
   const inputClass =
@@ -103,12 +158,26 @@ function AdminPage() {
       <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
         <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">Haber Ekle</h1>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          Buradan eklediğiniz haberler bu tarayıcıda saklanır ve sitede anında yayınlanır. Haberleri
-          tüm ziyaretçilere kalıcı olarak göstermek isterseniz bunu bir sonraki adımda ortak bir
-          veri tabanına taşıyabiliriz.
+          Buradan eklediğiniz haberler sitenin kendi veri tabanına kaydedilir; tüm ziyaretçiler
+          görür, görseller sitede saklanır ve haber otomatik olarak site haritasına eklenir.
         </p>
 
         <form onSubmit={onSubmit} className="mt-8 space-y-5" noValidate>
+          <div>
+            <label htmlFor="password" className="text-sm font-medium">
+              Yönetim şifresi
+            </label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              autoComplete="current-password"
+              className={inputClass}
+            />
+          </div>
+
           <div>
             <label htmlFor="category" className="text-sm font-medium">
               Kategori
@@ -165,9 +234,9 @@ function AdminPage() {
                 onChange={(e) => onFile(e.target.files?.[0])}
                 className="text-sm text-muted-foreground file:mr-3 file:rounded-md file:border-0 file:bg-secondary file:px-4 file:py-2 file:text-sm file:font-medium file:text-secondary-foreground"
               />
-              {image ? (
+              {preview ? (
                 <img
-                  src={image}
+                  src={preview}
                   alt="Seçilen görsel önizlemesi"
                   className="h-20 w-28 rounded-lg border border-border object-cover"
                 />
@@ -193,15 +262,17 @@ function AdminPage() {
 
           <button
             type="submit"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/85"
+            disabled={busy}
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/85 disabled:opacity-60"
           >
-            <Plus className="h-4 w-4" /> Haberi Yayınla
+            {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
+            Haberi Yayınla
           </button>
         </form>
 
         <section className="mt-12">
           <h2 className="font-display text-xl font-bold tracking-tight">
-            Eklediğiniz haberler ({items.length})
+            Yayındaki haberleriniz ({items.length})
           </h2>
           {items.length === 0 ? (
             <p className="mt-3 text-sm text-muted-foreground">Henüz haber eklemediniz.</p>
@@ -217,9 +288,11 @@ function AdminPage() {
                     {item.title}
                   </Link>
                   <button
-                    onClick={() => persist(items.filter((i) => i.slug !== item.slug))}
+                    type="button"
+                    onClick={() => void onDelete(item.slug)}
+                    disabled={busy}
                     aria-label={`${item.title} haberini sil`}
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-destructive/50 hover:text-destructive"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-destructive/50 hover:text-destructive disabled:opacity-50"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>
