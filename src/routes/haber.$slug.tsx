@@ -4,14 +4,13 @@ import { ArrowRight, CalendarDays, Clock, User } from "lucide-react";
 
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { ARTICLES, getArticle, getCategory, type Article } from "@/lib/articles";
-import { loadLocalArticles, toArticle } from "@/lib/local-articles";
+import { getDbArticle } from "@/lib/db-articles.functions";
 
 export const Route = createFileRoute("/haber/$slug")({
   staticData: { sitemap: true },
-  loader: ({ params }) => {
-    const article = getArticle(params.slug);
-    if (!article) return { article: null, slug: params.slug };
-    return { article, slug: params.slug };
+  loader: async ({ params }) => {
+    const article = getArticle(params.slug) ?? (await getDbArticle({ data: { slug: params.slug } }));
+    return { article: article ?? null, slug: params.slug };
   },
   head: ({ loaderData }) => {
     const article = loaderData?.article;
