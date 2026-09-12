@@ -165,10 +165,11 @@ function LanguagesPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
-      <section className="border-b border-border/60 bg-gradient-to-b from-primary/10 via-background to-background">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+      <section className="relative border-b border-border bg-gradient-to-b from-primary/8 via-background to-background overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-50" />
+        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/15 text-primary">
+            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/15 text-primary shadow-md shadow-primary/10">
               <Code2 className="h-6 w-6" />
             </span>
             <p className="text-sm font-semibold uppercase tracking-widest text-primary">BigKod Rehberi</p>
@@ -186,7 +187,7 @@ function LanguagesPage() {
               <a
                 key={lang.name}
                 href={`#${lang.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-                className="rounded-full border border-border/70 bg-card/60 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                className="rounded-full border border-border bg-card/60 px-3.5 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
               >
                 {lang.name}
               </a>
@@ -201,7 +202,7 @@ function LanguagesPage() {
             <article
               key={lang.name}
               id={lang.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
-              className="flex scroll-mt-24 flex-col rounded-2xl border border-border/70 bg-card/70 p-6 shadow-lg shadow-black/5"
+              className="group flex scroll-mt-24 flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
             >
               <div className="flex items-start justify-between gap-3">
                 <h2 className="text-xl font-bold tracking-tight sm:text-2xl">{lang.name}</h2>
@@ -239,20 +240,23 @@ function LanguagesPage() {
           ))}
         </div>
 
-        <section className="mt-14 rounded-2xl border border-primary/30 bg-primary/5 p-8 text-center">
-          <h2 className="text-2xl font-bold tracking-tight">Hangi dille başlamalıyım?</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Yeni başlıyorsanız Python ile temel mantığı kavramak, ardından ilgi alanınıza göre web için
-            JavaScript, oyun için C# veya sistem programlama için C/C++ yoluna girmek yaygın bir
-            yaklaşımdır. Mühendislik dalları hakkında daha fazla bilgi için rehberimize göz atın.
-          </p>
-          <Link
-            to="/muhendislik-dallari"
-            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Mühendislik Dalları Rehberi
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+        <section className="relative mt-14 overflow-hidden rounded-2xl border border-primary/30 bg-primary/5 p-8 text-center">
+          <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-primary/10 blur-3xl" />
+          <div className="relative">
+            <h2 className="text-2xl font-bold tracking-tight">Hangi dille başlamalıyım?</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Yeni başlıyorsanız Python ile temel mantığı kavramak, ardından ilgi alanınıza göre web için
+              JavaScript, oyun için C# veya sistem programlama için C/C++ yoluna girmek yaygın bir
+              yaklaşımdır. Mühendislik dalları hakkında daha fazla bilgi için rehberimize göz atın.
+            </p>
+            <Link
+              to="/muhendislik-dallari"
+              className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
+            >
+              Mühendislik Dalları Rehberi
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </section>
       </main>
 

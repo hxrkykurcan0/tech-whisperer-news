@@ -109,14 +109,15 @@ function BranchesPage() {
     <div className="min-h-screen bg-background font-sans text-foreground antialiased">
       <SiteHeader />
       <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
-        <nav className="text-xs text-muted-foreground" aria-label="Konum">
-          <Link to="/" className="hover:text-primary">
+        <nav className="flex items-center gap-2 text-xs text-muted-foreground" aria-label="Konum">
+          <Link to="/" className="transition-colors hover:text-primary">
             Ana sayfa
-          </Link>{" "}
-          / <span className="text-foreground">Mühendislik Dalları</span>
+          </Link>
+          <span className="text-border">/</span>
+          <span className="text-foreground">Mühendislik Dalları</span>
         </nav>
 
-        <h1 className="mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+        <h1 className="mt-6 font-display text-3xl font-bold tracking-tight sm:text-4xl">
           Mühendislik Dalları Rehberi
         </h1>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -130,7 +131,7 @@ function BranchesPage() {
             <a
               key={branch.name}
               href={`#${slugify(branch.name)}`}
-              className="rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+              className="rounded-full border border-border bg-card/60 px-3.5 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
             >
               {branch.name}
             </a>
@@ -142,7 +143,7 @@ function BranchesPage() {
             <article
               key={branch.name}
               id={slugify(branch.name)}
-              className="scroll-mt-24 rounded-2xl border border-border bg-card p-5 sm:p-7"
+              className="group scroll-mt-24 rounded-2xl border border-border bg-card p-5 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 sm:p-7"
             >
               <h2 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
                 {branch.name}
@@ -155,7 +156,7 @@ function BranchesPage() {
                 {branch.fields.map((field) => (
                   <span
                     key={field}
-                    className="rounded-full bg-secondary/60 px-3 py-1 text-xs font-medium text-muted-foreground"
+                    className="rounded-full border border-border bg-secondary/40 px-3 py-1 text-xs font-medium text-muted-foreground"
                   >
                     {field}
                   </span>

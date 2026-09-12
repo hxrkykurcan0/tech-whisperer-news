@@ -49,25 +49,39 @@ export function useTheme() {
 export function SiteHeader() {
   const { theme, toggle } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
+        scrolled
+          ? "border-border bg-background/85 shadow-lg shadow-black/5 backdrop-blur-xl"
+          : "border-transparent bg-background/60 backdrop-blur-md"
+      }`}
+    >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2.5" aria-label="BigKod ana sayfa">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+        <Link to="/" className="flex items-center gap-2.5 transition-transform hover:scale-[1.02]" aria-label="BigKod ana sayfa">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/90 text-primary-foreground shadow-md shadow-primary/20 transition-all hover:shadow-lg hover:shadow-primary/30">
             <Cpu className="h-5 w-5" />
           </span>
           <span className="font-display text-xl font-bold tracking-tight">
-            Big<span className="text-primary">Kod</span>
+            Big<span className="text-gradient">Kod</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Ana menü">
+        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Ana menü">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              className="link-underline rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {item.label}
             </a>
@@ -78,7 +92,7 @@ export function SiteHeader() {
           <button
             onClick={toggle}
             aria-label={theme === "dark" ? "Açık temaya geç" : "Koyu temaya geç"}
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-all hover:border-primary/50 hover:text-primary"
           >
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
@@ -86,7 +100,7 @@ export function SiteHeader() {
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Menüyü aç/kapat"
             aria-expanded={menuOpen}
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-all hover:border-primary/50 hover:text-primary lg:hidden"
           >
             {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
@@ -95,7 +109,7 @@ export function SiteHeader() {
 
       {menuOpen && (
         <nav
-          className="border-t border-border bg-background px-4 pb-4 pt-2 lg:hidden"
+          className="border-t border-border bg-background/95 px-4 pb-4 pt-2 backdrop-blur-xl lg:hidden"
           aria-label="Mobil menü"
         >
           {NAV_ITEMS.map((item) => (
@@ -103,7 +117,7 @@ export function SiteHeader() {
               key={item.label}
               href={item.href}
               onClick={() => setMenuOpen(false)}
-              className="block rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground"
             >
               {item.label}
             </a>
@@ -156,11 +170,11 @@ function Newsletter() {
             }}
             placeholder="ornek@eposta.com"
             maxLength={255}
-            className="h-11 flex-1 rounded-lg border border-input bg-card px-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+            className="h-11 flex-1 rounded-lg border border-input bg-card px-4 text-sm text-foreground transition-colors placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20"
           />
           <button
             type="submit"
-            className="h-11 rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/85"
+            className="h-11 rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/85 hover:shadow-md hover:shadow-primary/20"
           >
             Abone Ol
           </button>
@@ -184,15 +198,15 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer className="border-t border-border bg-card/50">
+    <footer className="relative border-t border-border bg-card/30">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
-          <Link to="/" className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+          <Link to="/" className="flex items-center gap-2.5 transition-transform hover:scale-[1.02]">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/90 text-primary-foreground shadow-md shadow-primary/20">
               <Cpu className="h-5 w-5" />
             </span>
             <span className="font-display text-xl font-bold tracking-tight">
-              Big<span className="text-primary">Kod</span>
+              Big<span className="text-gradient">Kod</span>
             </span>
           </Link>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
@@ -205,7 +219,7 @@ export function SiteFooter() {
                 key={s.label}
                 href="#"
                 aria-label={s.label}
-                className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
               >
                 <s.icon className="h-4 w-4" />
               </a>
@@ -221,29 +235,29 @@ export function SiteFooter() {
                 <Link
                   to="/kategori/$slug"
                   params={{ slug: category.slug }}
-                  className="transition-colors hover:text-primary"
+                  className="link-underline transition-colors hover:text-primary"
                 >
                   {category.name}
                 </Link>
               </li>
             ))}
             <li>
-              <Link to="/muhendislik-dallari" className="transition-colors hover:text-primary">
+              <Link to="/muhendislik-dallari" className="link-underline transition-colors hover:text-primary">
                 Mühendislik Dalları
               </Link>
             </li>
             <li>
-              <Link to="/yazilim-dilleri" className="transition-colors hover:text-primary">
+              <Link to="/yazilim-dilleri" className="link-underline transition-colors hover:text-primary">
                 Yazılım Dilleri
               </Link>
             </li>
             <li>
-              <Link to="/hakkimda" className="transition-colors hover:text-primary">
+              <Link to="/hakkimda" className="link-underline transition-colors hover:text-primary">
                 Hakkımda
               </Link>
             </li>
             <li>
-              <Link to="/admin" className="transition-colors hover:text-primary">
+              <Link to="/admin" className="link-underline transition-colors hover:text-primary">
                 Haber Ekle (Yönetim)
               </Link>
             </li>

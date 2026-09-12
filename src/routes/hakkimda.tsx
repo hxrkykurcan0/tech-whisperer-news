@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { GraduationCap, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, GraduationCap, Mail, Sparkles } from "lucide-react";
 
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 
@@ -30,60 +30,67 @@ function AboutPage() {
     <div className="min-h-screen bg-background font-sans text-foreground antialiased">
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
-        <nav className="text-xs text-muted-foreground" aria-label="Konum">
-          <Link to="/" className="hover:text-primary">
+        <nav className="flex items-center gap-2 text-xs text-muted-foreground" aria-label="Konum">
+          <Link to="/" className="transition-colors hover:text-primary">
             Ana sayfa
-          </Link>{" "}
-          / <span className="text-foreground">Hakkımda</span>
+          </Link>
+          <span className="text-border">/</span>
+          <span className="text-foreground">Hakkımda</span>
         </nav>
 
-        <h1 className="mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+        <h1 className="mt-6 font-display text-3xl font-bold tracking-tight sm:text-4xl">
           Hakkımda
         </h1>
 
-        <section className="mt-6 rounded-2xl border border-border bg-card p-6 sm:p-8">
-          <div className="flex items-center gap-4">
-            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary font-display text-lg font-bold text-primary-foreground">
-              BG
-            </span>
-            <div>
-              <p className="font-display text-xl font-semibold">Ali Haydar Kurçan</p>
-              <p className="text-sm text-muted-foreground">Lise öğrencisi • BigKod kurucusu</p>
-            </div>
-          </div>
-
-          <p className="mt-6 text-base leading-relaxed text-foreground sm:text-lg">
-            Ben Ali Haydar Kurçan, ileride bilgisayar mühendisliği okumak isteyen bir lise
-            öğrencisiyim.
-          </p>
-
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            BigKod'i, teknolojiye ilgi duyan öğrencilerin yazılım, yapay zeka, siber güvenlik ve
-            donanım dünyasındaki gelişmeleri sade bir Türkçeyle takip edebilmesi için hazırlıyorum.
-            Amacım hem kendi öğrenme sürecimi belgelemek hem de aynı yolda ilerlemek isteyenlere
-            derli toplu bir kaynak sunmak.
-          </p>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {[
-              { icon: GraduationCap, title: "Hedef", text: "Bilgisayar mühendisliği okumak" },
-              { icon: Sparkles, title: "İlgi alanları", text: "Yazılım, yapay zeka, donanım" },
-              { icon: Mail, title: "İletişim", text: "Bülten üzerinden ulaşabilirsiniz" },
-            ].map((item) => (
-              <div key={item.title} className="rounded-xl border border-border bg-secondary/40 p-4">
-                <item.icon className="h-5 w-5 text-primary" />
-                <p className="mt-2 text-sm font-semibold">{item.title}</p>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.text}</p>
+        <section className="relative mt-6 overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-8">
+          <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-primary/8 blur-3xl" />
+          <div className="relative">
+            <div className="flex items-center gap-4">
+              <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary/90 font-display text-xl font-bold text-primary-foreground shadow-lg shadow-primary/20">
+                BG
+              </span>
+              <div>
+                <p className="font-display text-xl font-semibold">Ali Haydar Kurçan</p>
+                <p className="text-sm text-muted-foreground">Lise öğrencisi • BigKod kurucusu</p>
               </div>
-            ))}
+            </div>
+
+            <p className="mt-6 border-l-2 border-primary/40 pl-4 text-base leading-relaxed text-foreground sm:text-lg">
+              Ben Ali Haydar Kurçan, ileride bilgisayar mühendisliği okumak isteyen bir lise
+              öğrencisiyim.
+            </p>
+
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              BigKod'i, teknolojiye ilgi duyan öğrencilerin yazılım, yapay zeka, siber güvenlik ve
+              donanım dünyasındaki gelişmeleri sade bir Türkçeyle takip edebilmesi için hazırlıyorum.
+              Amacım hem kendi öğrenme sürecimi belgelemek hem de aynı yolda ilerlemek isteyenlere
+              derli toplu bir kaynak sunmak.
+            </p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {[
+                { icon: GraduationCap, title: "Hedef", text: "Bilgisayar mühendisliği okumak" },
+                { icon: Sparkles, title: "İlgi alanları", text: "Yazılım, yapay zeka, donanım" },
+                { icon: Mail, title: "İletişim", text: "Bülten üzerinden ulaşabilirsiniz" },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-xl border border-border bg-secondary/30 p-4 transition-all hover:border-primary/30 hover:bg-secondary/50"
+                >
+                  <item.icon className="h-5 w-5 text-primary" />
+                  <p className="mt-2 text-sm font-semibold">{item.title}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         <Link
           to="/muhendislik-dallari"
-          className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+          className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
         >
-          Mühendislik dalları rehberini incele →
+          Mühendislik dalları rehberini incele <ArrowRight className="h-4 w-4" />
         </Link>
       </main>
       <SiteFooter />

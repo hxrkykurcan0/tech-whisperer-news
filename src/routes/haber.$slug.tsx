@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, CalendarDays, Clock, User } from "lucide-react";
+import { ArrowRight, ArrowLeft, CalendarDays, Clock, User, Sparkles } from "lucide-react";
 
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { ARTICLES, getArticle, getCategory } from "@/lib/articles";
@@ -35,22 +35,16 @@ export const Route = createFileRoute("/haber/$slug")({
 function ArticlePage() {
   const { article } = Route.useLoaderData();
   const [expanded, setExpanded] = useState(false);
-  const checked = true;
-
 
   if (!article) {
     return (
       <div className="min-h-screen bg-background font-sans text-foreground antialiased">
         <SiteHeader />
         <main className="mx-auto max-w-3xl px-4 py-20 text-center">
-          <h1 className="font-display text-2xl font-bold">
-            {checked ? "Haber bulunamadı" : "Yükleniyor…"}
-          </h1>
-          {checked && (
-            <Link to="/" className="mt-6 inline-block text-sm font-semibold text-primary hover:underline">
-              Ana sayfaya dön
-            </Link>
-          )}
+          <h1 className="font-display text-2xl font-bold">Haber bulunamadı</h1>
+          <Link to="/" className="mt-6 inline-block text-sm font-semibold text-primary hover:underline">
+            Ana sayfaya dön
+          </Link>
         </main>
         <SiteFooter />
       </div>
@@ -69,55 +63,63 @@ function ArticlePage() {
     <div className="min-h-screen bg-background font-sans text-foreground antialiased">
       <SiteHeader />
       <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
-        <nav className="text-xs text-muted-foreground" aria-label="Konum">
-          <Link to="/" className="hover:text-primary">
+        <nav className="flex items-center gap-2 text-xs text-muted-foreground" aria-label="Konum">
+          <Link to="/" className="transition-colors hover:text-primary">
             Ana sayfa
           </Link>
+          <span className="text-border">/</span>
           {category && (
             <>
-              {" / "}
-              <Link to="/kategori/$slug" params={{ slug: category.slug }} className="hover:text-primary">
+              <Link
+                to="/kategori/$slug"
+                params={{ slug: category.slug }}
+                className="transition-colors hover:text-primary"
+              >
                 {category.name}
               </Link>
+              <span className="text-border">/</span>
             </>
           )}
+          <span className="truncate text-foreground">{article.title.slice(0, 40)}…</span>
         </nav>
 
-        <article className="mt-4">
-          <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+        <article className="mt-6">
+          <span className="inline-block rounded-full bg-primary/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide text-primary">
             {article.category}
           </span>
-          <h1 className="mt-3 font-display text-2xl font-bold leading-tight sm:text-4xl">
+          <h1 className="mt-4 font-display text-2xl font-bold leading-tight sm:text-4xl">
             {article.title}
           </h1>
-          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
-            <span className="flex items-center gap-1">
-              <User className="h-3.5 w-3.5" /> {article.author}
+          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1.5">
+              <User className="h-3.5 w-3.5 text-primary/70" /> {article.author}
             </span>
-            <span className="flex items-center gap-1">
-              <CalendarDays className="h-3.5 w-3.5" /> {article.date}
+            <span className="flex items-center gap-1.5">
+              <CalendarDays className="h-3.5 w-3.5 text-primary/70" /> {article.date}
             </span>
-            <span className="flex items-center gap-1">
-              <Clock className="h-3.5 w-3.5" /> {article.readTime} okuma
+            <span className="flex items-center gap-1.5">
+              <Clock className="h-3.5 w-3.5 text-primary/70" /> {article.readTime} okuma
             </span>
           </div>
 
-          <img
-            src={article.image}
-            alt={article.imageAlt}
-            width={1200}
-            height={675}
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
-            className="mt-5 aspect-[16/9] w-full rounded-xl border border-border object-cover"
-          />
+          <div className="mt-6 overflow-hidden rounded-2xl border border-border shadow-xl shadow-black/10">
+            <img
+              src={article.image}
+              alt={article.imageAlt}
+              width={1200}
+              height={675}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              className="aspect-[16/9] w-full object-cover"
+            />
+          </div>
 
-          <p className="mt-6 text-base font-medium leading-relaxed text-foreground sm:text-lg">
+          <p className="mt-6 border-l-2 border-primary/40 pl-4 text-base font-medium leading-relaxed text-foreground sm:text-lg">
             {article.excerpt}
           </p>
 
-          <div className="mt-6 space-y-5 text-[15px] leading-[1.75] text-muted-foreground sm:text-base sm:leading-8">
+          <div className="mt-8 space-y-5 text-[15px] leading-[1.75] text-muted-foreground sm:text-base sm:leading-8">
             {preview.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}
@@ -132,7 +134,7 @@ function ArticlePage() {
                 {!expanded && (
                   <button
                     onClick={() => setExpanded(true)}
-                    className="w-full rounded-lg border border-primary/40 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary sm:hidden"
+                    className="w-full rounded-xl border border-primary/40 bg-primary/10 px-4 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/20 sm:hidden"
                   >
                     Haberin devamını oku ({rest.length} paragraf)
                   </button>
@@ -142,11 +144,14 @@ function ArticlePage() {
           </div>
 
           {article.keyPoints.length > 0 && (
-            <aside className="mt-8 rounded-xl border border-border bg-card p-5">
-              <h2 className="font-display text-base font-semibold">Öne çıkan başlıklar</h2>
-              <ul className="mt-3 space-y-2">
+            <aside className="mt-8 rounded-2xl border border-border bg-card p-6">
+              <h2 className="flex items-center gap-2 font-display text-base font-semibold">
+                <Sparkles className="h-4 w-4 text-primary" />
+                Öne çıkan başlıklar
+              </h2>
+              <ul className="mt-4 space-y-3">
                 {article.keyPoints.map((point) => (
-                  <li key={point} className="flex gap-2 text-sm text-muted-foreground">
+                  <li key={point} className="flex gap-3 text-sm text-muted-foreground">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                     {point}
                   </li>
@@ -165,7 +170,7 @@ function ArticlePage() {
                   <Link
                     to="/haber/$slug"
                     params={{ slug: item.slug }}
-                    className="group flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/40"
+                    className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 hover:shadow-md hover:shadow-primary/5"
                   >
                     <img
                       src={item.image}
@@ -176,9 +181,10 @@ function ArticlePage() {
                       decoding="async"
                       className="h-16 w-20 shrink-0 rounded-lg object-cover"
                     />
-                    <span className="text-sm font-semibold leading-snug group-hover:text-primary">
+                    <span className="text-sm font-semibold leading-snug transition-colors group-hover:text-primary">
                       {item.title}
                     </span>
+                    <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                   </Link>
                 </li>
               ))}
@@ -186,15 +192,23 @@ function ArticlePage() {
           </section>
         )}
 
-        {category && (
+        <div className="mt-10 flex items-center gap-4">
+          {category && (
+            <Link
+              to="/kategori/$slug"
+              params={{ slug: category.slug }}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+            >
+              {category.name} kategorisindeki tüm haberler <ArrowRight className="h-4 w-4" />
+            </Link>
+          )}
           <Link
-            to="/kategori/$slug"
-            params={{ slug: category.slug }}
-            className="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+            to="/"
+            className="ml-auto inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
-            {category.name} kategorisindeki tüm haberler <ArrowRight className="h-4 w-4" />
+            <ArrowLeft className="h-4 w-4" /> Ana sayfa
           </Link>
-        )}
+        </div>
       </main>
       <SiteFooter />
     </div>
