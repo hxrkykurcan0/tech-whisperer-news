@@ -1,9 +1,9 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowRight, CalendarDays, Clock, User } from "lucide-react";
 
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
-import { ARTICLES, getArticle, getCategory, type Article } from "@/lib/articles";
+import { ARTICLES, getArticle, getCategory } from "@/lib/articles";
 import { getDbArticle } from "@/lib/db-articles.functions";
 
 export const Route = createFileRoute("/haber/$slug")({
