@@ -195,7 +195,7 @@ function LanguagesPage() {
       </section>
 
       <main className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="space-y-8">
           {LANGUAGES.map((lang) => (
             <article
               key={lang.name}
