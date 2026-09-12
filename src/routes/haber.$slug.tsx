@@ -33,17 +33,10 @@ export const Route = createFileRoute("/haber/$slug")({
 });
 
 function ArticlePage() {
-  const { article: staticArticle, slug } = Route.useLoaderData();
-  const [article, setArticle] = useState<Article | null>(staticArticle);
-  const [checked, setChecked] = useState(Boolean(staticArticle));
+  const { article } = Route.useLoaderData();
   const [expanded, setExpanded] = useState(false);
+  const checked = true;
 
-  useEffect(() => {
-    if (staticArticle) return;
-    const local = loadLocalArticles().find((item) => item.slug === slug);
-    setArticle(local ? toArticle(local) : null);
-    setChecked(true);
-  }, [slug, staticArticle]);
 
   if (!article) {
     return (
