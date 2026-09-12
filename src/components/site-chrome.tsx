@@ -58,7 +58,7 @@ export function SiteHeader() {
             <Cpu className="h-5 w-5" />
           </span>
           <span className="font-display text-xl font-bold tracking-tight">
-            Bit<span className="text-primary">Gündem</span>
+            Big<span className="text-primary">Kod</span>
           </span>
         </Link>
 
@@ -192,7 +192,7 @@ export function SiteFooter() {
               <Cpu className="h-5 w-5" />
             </span>
             <span className="font-display text-xl font-bold tracking-tight">
-              Bit<span className="text-primary">Gündem</span>
+              Big<span className="text-primary">Kod</span>
             </span>
           </Link>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
