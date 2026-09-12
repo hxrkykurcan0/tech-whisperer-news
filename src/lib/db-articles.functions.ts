@@ -138,3 +138,37 @@ export const checkAdminPassword = createServerFn({ method: "POST" })
     checkPassword(data.password);
     return { ok: true };
   });
+
+/** Tek bir özel haberi slug ile getirir. */
+export const getDbArticle = createServerFn({ method: "GET" })
+  .inputValidator((data: unknown) => z.object({ slug: z.string().min(1) }).parse(data))
+  .handler(async ({ data }) => {
+    try {
+      const supabase = await publicClient();
+      const { data: row, error } = await supabase
+        .from("articles")
+        .select(SELECT_COLUMNS)
+        .eq("slug", data.slug)
+        .maybeSingle();
+      if (error || !row) return null;
+      return rowToArticle(row as unknown as DbArticleRow);
+    } catch {
+      return null;
+    }
+  });
+
+/** Site haritası için yayınlanan haber slug ve tarihleri. */
+export const listDbArticleSlugs = createServerFn({ method: "GET" }).handler(async () => {
+  try {
+    const supabase = await publicClient();
+    const { data, error } = await supabase
+      .from("articles")
+      .select("slug, published_at")
+      .order("published_at", { ascending: false })
+      .limit(500);
+    if (error) throw error;
+    return (data ?? []) as { slug: string; published_at: string }[];
+  } catch {
+    return [] as { slug: string; published_at: string }[];
+  }
+});
