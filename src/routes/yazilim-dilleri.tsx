@@ -232,6 +232,8 @@ function LanguagesPage() {
                   </span>
                 ))}
               </div>
+
+              <LanguageArticleBlock name={lang.name} />
             </article>
           ))}
         </div>
