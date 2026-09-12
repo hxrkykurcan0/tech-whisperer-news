@@ -17,7 +17,7 @@ import careerImg from "@/assets/news-career.jpg";
 import eventImg from "@/assets/news-event.jpg";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { ARTICLES, HERO_SLUG, getArticle, type Article } from "@/lib/articles";
-import { loadLocalArticles, toArticle } from "@/lib/local-articles";
+import { listDbArticles } from "@/lib/db-articles.functions";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
@@ -117,7 +117,7 @@ function ArticleGrid() {
   const [local, setLocal] = useState<Article[]>([]);
 
   useEffect(() => {
-    setLocal(loadLocalArticles().map(toArticle));
+    void listDbArticles().then(setLocal).catch(() => setLocal([]));
   }, []);
 
   const list = [...local, ...ARTICLES.filter((a) => a.slug !== HERO_SLUG)];

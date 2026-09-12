@@ -1,17 +1,16 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowRight, CalendarDays, Clock, User } from "lucide-react";
 
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
-import { ARTICLES, getArticle, getCategory, type Article } from "@/lib/articles";
-import { loadLocalArticles, toArticle } from "@/lib/local-articles";
+import { ARTICLES, getArticle, getCategory } from "@/lib/articles";
+import { getDbArticle } from "@/lib/db-articles.functions";
 
 export const Route = createFileRoute("/haber/$slug")({
   staticData: { sitemap: true },
-  loader: ({ params }) => {
-    const article = getArticle(params.slug);
-    if (!article) return { article: null, slug: params.slug };
-    return { article, slug: params.slug };
+  loader: async ({ params }) => {
+    const article = getArticle(params.slug) ?? (await getDbArticle({ data: { slug: params.slug } }));
+    return { article: article ?? null, slug: params.slug };
   },
   head: ({ loaderData }) => {
     const article = loaderData?.article;
@@ -34,17 +33,10 @@ export const Route = createFileRoute("/haber/$slug")({
 });
 
 function ArticlePage() {
-  const { article: staticArticle, slug } = Route.useLoaderData();
-  const [article, setArticle] = useState<Article | null>(staticArticle);
-  const [checked, setChecked] = useState(Boolean(staticArticle));
+  const { article } = Route.useLoaderData();
   const [expanded, setExpanded] = useState(false);
+  const checked = true;
 
-  useEffect(() => {
-    if (staticArticle) return;
-    const local = loadLocalArticles().find((item) => item.slug === slug);
-    setArticle(local ? toArticle(local) : null);
-    setChecked(true);
-  }, [slug, staticArticle]);
 
   if (!article) {
     return (

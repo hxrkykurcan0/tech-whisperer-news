@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Code2 } from "lucide-react";
 
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { LANGUAGE_ARTICLES } from "@/lib/language-articles";
 
 interface Language {
   name: string;
@@ -195,7 +196,7 @@ function LanguagesPage() {
       </section>
 
       <main className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="space-y-8">
           {LANGUAGES.map((lang) => (
             <article
               key={lang.name}
@@ -232,6 +233,8 @@ function LanguagesPage() {
                   </span>
                 ))}
               </div>
+
+              <LanguageArticleBlock name={lang.name} />
             </article>
           ))}
         </div>
@@ -255,5 +258,57 @@ function LanguagesPage() {
 
       <SiteFooter />
     </div>
+  );
+}
+
+function LanguageArticleBlock({ name }: { name: string }) {
+  const article = LANGUAGE_ARTICLES[name];
+  if (!article) return null;
+
+  return (
+    <details className="group mt-5 border-t border-border/60 pt-4">
+      <summary className="cursor-pointer list-none text-sm font-semibold text-primary">
+        {name} makalesini oku (kullanım alanları, örnekler, kariyer) ▾
+      </summary>
+
+      <div className="mt-4 space-y-6 text-sm leading-relaxed text-muted-foreground">
+        <p className="text-[15px] font-medium text-foreground">{article.intro}</p>
+
+        {article.sections.map((section) => (
+          <section key={section.heading}>
+            <h3 className="font-display text-base font-semibold text-foreground">{section.heading}</h3>
+            <div className="mt-2 space-y-3">
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+              ))}
+            </div>
+          </section>
+        ))}
+
+        <section>
+          <h3 className="font-display text-base font-semibold text-foreground">Örnek projeler</h3>
+          <ul className="mt-2 grid gap-3 sm:grid-cols-2">
+            {article.examples.map((example) => (
+              <li key={example.title} className="rounded-xl border border-border/60 bg-background/50 p-4">
+                <p className="text-sm font-semibold text-foreground">{example.title}</p>
+                <p className="mt-1 text-xs leading-relaxed">{example.description}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
+          <h3 className="font-display text-base font-semibold text-foreground">Kariyer fırsatları</h3>
+          <ul className="mt-2 space-y-2">
+            {article.careers.map((career) => (
+              <li key={career.slice(0, 40)} className="flex gap-2">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                {career}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </details>
   );
 }

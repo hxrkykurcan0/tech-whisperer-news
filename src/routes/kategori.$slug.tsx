@@ -4,7 +4,7 @@ import { ArrowRight, CalendarDays, Clock, Tag } from "lucide-react";
 
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { articlesByCategory, getCategory, type Article } from "@/lib/articles";
-import { loadLocalArticles, toArticle } from "@/lib/local-articles";
+import { listDbArticles } from "@/lib/db-articles.functions";
 
 export const Route = createFileRoute("/kategori/$slug")({
   staticData: { sitemap: true },
@@ -39,11 +39,9 @@ function CategoryPage() {
   const [extra, setExtra] = useState<Article[]>([]);
 
   useEffect(() => {
-    setExtra(
-      loadLocalArticles()
-        .filter((item) => item.categorySlug === category.slug)
-        .map(toArticle),
-    );
+    void listDbArticles()
+      .then((list) => setExtra(list.filter((item) => item.categorySlug === category.slug)))
+      .catch(() => setExtra([]));
   }, [category.slug]);
 
   const articles = [...extra, ...articlesByCategory(category.slug)];
