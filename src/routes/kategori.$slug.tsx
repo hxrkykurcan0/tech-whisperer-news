@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, ArrowUpRight, CalendarDays, Clock, Tag } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CalendarDays, Clock, Tag, Sparkles, Layers } from "lucide-react";
 
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { articlesByCategory, getCategory, type Article } from "@/lib/articles";
@@ -50,7 +50,8 @@ function CategoryPage() {
     <div className="min-h-screen bg-background font-sans text-foreground antialiased">
       <SiteHeader />
       <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14">
-        <nav className="flex items-center gap-2 text-xs text-muted-foreground" aria-label="Konum">
+        {/* Breadcrumb */}
+        <nav className="flex items-center gap-2 text-xs text-muted-foreground animate-fade-in-up" aria-label="Konum">
           <Link to="/" className="transition-colors hover:text-primary">
             Ana sayfa
           </Link>
@@ -58,9 +59,14 @@ function CategoryPage() {
           <span className="text-foreground">{category.name}</span>
         </nav>
 
-        <header className="mt-6 overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-8">
+        {/* Premium category header */}
+        <header className="mt-6 overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-8 aurora gradient-border animate-fade-in-up">
           <div className="relative">
-            <h1 className="font-display text-2xl font-bold tracking-tight sm:text-4xl">
+            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
+              <Layers className="h-4 w-4" />
+              Kategori
+            </div>
+            <h1 className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-4xl">
               {category.name}
             </h1>
             <p className="mt-2 text-sm font-medium text-primary sm:text-base">{category.tagline}</p>
@@ -70,8 +76,11 @@ function CategoryPage() {
 
             <div className="mt-6 grid gap-6 lg:grid-cols-2">
               <div>
-                <h2 className="font-display text-base font-semibold">Bu kategoride öne çıkanlar</h2>
-                <ul className="mt-3 space-y-2">
+                <h2 className="flex items-center gap-2 font-display text-base font-semibold">
+                  <Sparkles className="h-4 w-4 text-primary" />
+                  Bu kategoride öne çıkanlar
+                </h2>
+                <ul className="mt-3 space-y-2.5">
                   {category.highlights.map((item) => (
                     <li key={item} className="flex gap-2.5 text-sm text-muted-foreground">
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
@@ -81,12 +90,15 @@ function CategoryPage() {
                 </ul>
               </div>
               <div>
-                <h2 className="font-display text-base font-semibold">Konu başlıkları</h2>
+                <h2 className="flex items-center gap-2 font-display text-base font-semibold">
+                  <Tag className="h-4 w-4 text-primary" />
+                  Konu başlıkları
+                </h2>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {category.topics.map((topic) => (
                     <span
                       key={topic}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary/50 px-3 py-1.5 text-xs font-medium text-muted-foreground"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary/50 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
                     >
                       <Tag className="h-3 w-3" />
                       {topic}
@@ -98,15 +110,20 @@ function CategoryPage() {
           </div>
         </header>
 
-        <h2 className="mt-10 font-display text-xl font-bold tracking-tight sm:text-2xl">
-          {category.name} haberleri <span className="text-muted-foreground">({articles.length})</span>
-        </h2>
+        {/* Article count header */}
+        <div className="mt-10 flex items-end justify-between gap-4">
+          <h2 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
+            {category.name} haberleri{" "}
+            <span className="text-muted-foreground">({articles.length})</span>
+          </h2>
+        </div>
 
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Article grid */}
+        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 stagger">
           {articles.map((article) => (
             <article
               key={article.slug}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-400 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 card-lift"
             >
               <div className="relative overflow-hidden">
                 <img
@@ -116,8 +133,9 @@ function CategoryPage() {
                   height={600}
                   loading="lazy"
                   decoding="async"
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
               </div>
               <div className="flex flex-1 flex-col p-5">
                 <h3 className="font-display text-lg font-semibold leading-snug transition-colors group-hover:text-primary">
@@ -125,7 +143,7 @@ function CategoryPage() {
                     {article.title}
                   </Link>
                 </h3>
-                <p className="mt-2 line-clamp-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {article.excerpt}
                 </p>
                 <div className="mt-4 flex items-center justify-between gap-3 border-t border-border pt-4 text-xs text-muted-foreground">
@@ -140,7 +158,7 @@ function CategoryPage() {
                   <Link
                     to="/haber/$slug"
                     params={{ slug: article.slug }}
-                    className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-primary/30 bg-primary/10 px-3.5 py-1.5 text-xs font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-primary/30 bg-primary/10 px-3.5 py-1.5 text-xs font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-md hover:shadow-primary/20"
                   >
                     Oku <ArrowUpRight className="h-3.5 w-3.5" />
                   </Link>
@@ -152,9 +170,9 @@ function CategoryPage() {
 
         <Link
           to="/"
-          className="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+          className="group mt-10 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
         >
-          Ana sayfaya dön <ArrowRight className="h-4 w-4" />
+          Ana sayfaya dön <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
       </main>
       <SiteFooter />
