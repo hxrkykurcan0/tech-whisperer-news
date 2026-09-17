@@ -47,11 +47,10 @@ function CategoryPage() {
   const articles = [...extra, ...articlesByCategory(category.slug)];
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground antialiased">
+    <div className="min-h-screen bg-mesh font-sans text-foreground antialiased">
       <SiteHeader />
       <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs text-muted-foreground animate-fade-in-up" aria-label="Konum">
+        <nav className="flex items-center gap-2 text-xs text-muted-foreground anim-in" aria-label="Konum">
           <Link to="/" className="transition-colors hover:text-primary">
             Ana sayfa
           </Link>
@@ -59,8 +58,7 @@ function CategoryPage() {
           <span className="text-foreground">{category.name}</span>
         </nav>
 
-        {/* Premium category header */}
-        <header className="mt-6 overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-8 aurora gradient-border animate-fade-in-up">
+        <header className="mt-6 overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-8 aurora-blobs ring-gradient anim-in">
           <div className="relative">
             <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
               <Layers className="h-4 w-4" />
@@ -110,7 +108,6 @@ function CategoryPage() {
           </div>
         </header>
 
-        {/* Article count header */}
         <div className="mt-10 flex items-end justify-between gap-4">
           <h2 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
             {category.name} haberleri{" "}
@@ -118,12 +115,11 @@ function CategoryPage() {
           </h2>
         </div>
 
-        {/* Article grid */}
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 stagger">
           {articles.map((article) => (
             <article
               key={article.slug}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-400 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 card-lift"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card lift hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
             >
               <div className="relative overflow-hidden">
                 <img

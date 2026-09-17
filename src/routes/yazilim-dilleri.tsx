@@ -162,11 +162,11 @@ export const Route = createFileRoute("/yazilim-dilleri")({
 
 function LanguagesPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-mesh text-foreground antialiased">
       <SiteHeader />
 
-      <section className="relative border-b border-border bg-gradient-to-b from-primary/8 via-background to-background overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-50" />
+      <section className="relative border-b border-border bg-mesh overflow-hidden">
+        <div className="absolute inset-0 bg-grid-fine opacity-50" />
         <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/15 text-primary shadow-md shadow-primary/10">
@@ -202,7 +202,7 @@ function LanguagesPage() {
             <article
               key={lang.name}
               id={lang.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
-              className="group flex scroll-mt-24 flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
+              className="group flex scroll-mt-24 flex-col rounded-2xl border border-border bg-card p-6 lift hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
             >
               <div className="flex items-start justify-between gap-3">
                 <h2 className="text-xl font-bold tracking-tight sm:text-2xl">{lang.name}</h2>

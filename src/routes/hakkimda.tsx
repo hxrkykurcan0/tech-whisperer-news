@@ -34,11 +34,10 @@ const INTERESTS = [
 
 function AboutPage() {
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground antialiased">
+    <div className="min-h-screen bg-mesh font-sans text-foreground antialiased">
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs text-muted-foreground animate-fade-in-up" aria-label="Konum">
+        <nav className="flex items-center gap-2 text-xs text-muted-foreground anim-in" aria-label="Konum">
           <Link to="/" className="transition-colors hover:text-primary">
             Ana sayfa
           </Link>
@@ -46,8 +45,7 @@ function AboutPage() {
           <span className="text-foreground">Hakkımda</span>
         </nav>
 
-        {/* Page title */}
-        <div className="mt-6 animate-fade-in-up">
+        <div className="mt-6 anim-in">
           <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
             <Zap className="h-4 w-4" />
             Hakkımda
@@ -57,11 +55,10 @@ function AboutPage() {
           </h1>
         </div>
 
-        {/* Profile card */}
-        <section className="relative mt-6 overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-8 aurora gradient-border animate-fade-in-up">
+        <section className="relative mt-6 overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-8 aurora-blobs ring-gradient anim-in">
           <div className="relative">
             <div className="flex items-center gap-4">
-              <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary/90 font-display text-xl font-bold text-primary-foreground shadow-lg shadow-primary/20">
+              <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary font-display text-xl font-bold text-primary-foreground shadow-lg shadow-primary/20">
                 BG
               </span>
               <div>
@@ -82,7 +79,6 @@ function AboutPage() {
               derli toplu bir kaynak sunmak.
             </p>
 
-            {/* Info cards */}
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {[
                 { icon: GraduationCap, title: "Hedef", text: "Bilgisayar mühendisliği okumak" },
@@ -91,7 +87,7 @@ function AboutPage() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="group rounded-xl border border-border bg-secondary/30 p-4 transition-all hover:border-primary/30 hover:bg-secondary/50 card-lift"
+                  className="group rounded-xl border border-border bg-secondary/30 p-4 lift hover:border-primary/30 hover:bg-secondary/50"
                 >
                   <item.icon className="h-5 w-5 text-primary transition-transform group-hover:scale-110" />
                   <p className="mt-2 text-sm font-semibold">{item.title}</p>
@@ -102,14 +98,13 @@ function AboutPage() {
           </div>
         </section>
 
-        {/* Interest areas */}
-        <section className="mt-8 animate-fade-in-up">
+        <section className="mt-8 anim-in">
           <h2 className="font-display text-xl font-bold tracking-tight">İlgi alanlarım</h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 stagger">
             {INTERESTS.map((interest) => (
               <div
                 key={interest.label}
-                className="group flex items-start gap-4 rounded-2xl border border-border bg-card p-5 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 card-lift"
+                className="group flex items-start gap-4 rounded-2xl border border-border bg-card p-5 lift hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
               >
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all group-hover:bg-primary group-hover:text-primary-foreground">
                   <interest.icon className="h-5 w-5" />
@@ -123,8 +118,7 @@ function AboutPage() {
           </div>
         </section>
 
-        {/* CTA */}
-        <div className="mt-8 flex flex-wrap gap-3 animate-fade-in-up">
+        <div className="mt-8 flex flex-wrap gap-3 anim-in">
           <Link
             to="/muhendislik-dallari"
             className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/85 hover:shadow-md hover:shadow-primary/20"

@@ -106,10 +106,10 @@ export const Route = createFileRoute("/muhendislik-dallari")({
 
 function BranchesPage() {
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground antialiased">
+    <div className="min-h-screen bg-mesh font-sans text-foreground antialiased">
       <SiteHeader />
       <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
-        <nav className="flex items-center gap-2 text-xs text-muted-foreground" aria-label="Konum">
+        <nav className="flex items-center gap-2 text-xs text-muted-foreground anim-in" aria-label="Konum">
           <Link to="/" className="transition-colors hover:text-primary">
             Ana sayfa
           </Link>
@@ -117,7 +117,7 @@ function BranchesPage() {
           <span className="text-foreground">Mühendislik Dalları</span>
         </nav>
 
-        <h1 className="mt-6 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+        <h1 className="mt-6 font-display text-3xl font-bold tracking-tight anim-in sm:text-4xl">
           Mühendislik Dalları Rehberi
         </h1>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -143,7 +143,7 @@ function BranchesPage() {
             <article
               key={branch.name}
               id={slugify(branch.name)}
-              className="group scroll-mt-24 rounded-2xl border border-border bg-card p-5 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 sm:p-7"
+              className="group scroll-mt-24 rounded-2xl border border-border bg-card p-5 lift hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 sm:p-7"
             >
               <h2 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
                 {branch.name}

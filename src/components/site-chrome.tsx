@@ -11,7 +11,6 @@ import {
   Twitter,
   X,
   Youtube,
-  ArrowRight,
 } from "lucide-react";
 
 import { CATEGORIES } from "@/lib/articles";

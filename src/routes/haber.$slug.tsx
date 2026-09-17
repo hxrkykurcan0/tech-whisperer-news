@@ -70,7 +70,7 @@ function ArticlePage() {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-background font-sans text-foreground antialiased">
+      <div className="min-h-screen bg-mesh font-sans text-foreground antialiased">
         <SiteHeader />
         <main className="mx-auto max-w-3xl px-4 py-20 text-center">
           <h1 className="font-display text-2xl font-bold">Haber bulunamadı</h1>
@@ -92,12 +92,11 @@ function ArticlePage() {
   const rest = article.body.slice(2);
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground antialiased">
+    <div className="min-h-screen bg-mesh font-sans text-foreground antialiased">
       <ReadingProgress />
       <SiteHeader />
       <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs text-muted-foreground animate-fade-in-up" aria-label="Konum">
+        <nav className="flex items-center gap-2 text-xs text-muted-foreground anim-in" aria-label="Konum">
           <Link to="/" className="transition-colors hover:text-primary">
             Ana sayfa
           </Link>
@@ -117,8 +116,7 @@ function ArticlePage() {
           <span className="truncate text-foreground">{article.title.slice(0, 40)}…</span>
         </nav>
 
-        {/* Article header */}
-        <article className="mt-6 animate-fade-in-up">
+        <article className="mt-6 anim-in">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide text-primary">
             {article.category}
           </span>
@@ -126,7 +124,6 @@ function ArticlePage() {
             {article.title}
           </h1>
 
-          {/* Meta bar */}
           <div className="mt-5 flex flex-wrap items-center justify-between gap-y-3 border-y border-border py-4">
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
               <span className="flex items-center gap-1.5">
@@ -163,7 +160,6 @@ function ArticlePage() {
             </div>
           </div>
 
-          {/* Hero image */}
           <div className="mt-6 overflow-hidden rounded-2xl border border-border shadow-xl shadow-black/10">
             <img
               src={article.image}
@@ -177,12 +173,10 @@ function ArticlePage() {
             />
           </div>
 
-          {/* Excerpt */}
           <p className="mt-6 border-l-2 border-primary/40 pl-4 text-base font-medium leading-relaxed text-foreground sm:text-lg">
             {article.excerpt}
           </p>
 
-          {/* Body */}
           <div className="mt-8 space-y-5 text-[15px] leading-[1.75] text-muted-foreground sm:text-base sm:leading-8">
             {preview.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
@@ -207,9 +201,8 @@ function ArticlePage() {
             )}
           </div>
 
-          {/* Key points */}
           {article.keyPoints.length > 0 && (
-            <aside className="mt-8 overflow-hidden rounded-2xl border border-border bg-card gradient-border">
+            <aside className="mt-8 overflow-hidden rounded-2xl border border-border bg-card ring-gradient">
               <div className="p-6">
                 <h2 className="flex items-center gap-2 font-display text-base font-semibold">
                   <Sparkles className="h-4 w-4 text-primary" />
@@ -228,7 +221,6 @@ function ArticlePage() {
           )}
         </article>
 
-        {/* Related articles */}
         {related.length > 0 && (
           <section className="mt-12">
             <h2 className="font-display text-xl font-bold tracking-tight">İlgili haberler</h2>
@@ -238,7 +230,7 @@ function ArticlePage() {
                   <Link
                     to="/haber/$slug"
                     params={{ slug: item.slug }}
-                    className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 hover:shadow-md hover:shadow-primary/5 card-lift"
+                    className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 lift hover:border-primary/40 hover:shadow-md hover:shadow-primary/5"
                   >
                     <img
                       src={item.image}
@@ -260,7 +252,6 @@ function ArticlePage() {
           </section>
         )}
 
-        {/* Footer links */}
         <div className="mt-10 flex items-center gap-4">
           {category && (
             <Link

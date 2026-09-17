@@ -14,9 +14,9 @@ import {
   ShieldCheck,
   Sparkles,
   TrendingUp,
-  Zap,
   Eye,
   Layers,
+  Zap,
 } from "lucide-react";
 
 import heroImg from "@/assets/hero-news.jpg";
@@ -69,25 +69,24 @@ function Hero() {
 
   return (
     <section id="haberler" className="relative mx-auto max-w-7xl px-4 pt-10 sm:px-6 sm:pt-14">
-      <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary animate-fade-in-up">
+      <div className="anim-in flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
         <Sparkles className="h-4 w-4" />
         Öne Çıkan Haber
       </div>
 
-      <article className="group relative mt-4 overflow-hidden rounded-3xl border border-border shadow-2xl shadow-black/30 animate-fade-in-up gradient-border">
+      <article className="group relative mt-4 overflow-hidden rounded-3xl border border-border shadow-2xl shadow-black/40 anim-in ring-gradient">
         <img
           src={heroImg}
           alt="Fütüristik bilgisayar mühendisliği laboratuvarı ve sunucu odası"
           width={1600}
           height={900}
-          className="aspect-[16/9] w-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.05] sm:aspect-[21/9]"
+          className="aspect-[16/9] w-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06] sm:aspect-[21/9]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/5" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
 
-        {/* Floating category badge */}
         <div className="absolute left-5 top-5 sm:left-8 sm:top-8">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide text-primary-foreground shadow-lg shadow-primary/30 badge-pulse">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide text-primary-foreground shadow-lg shadow-primary/30 pulse-glow">
             <Cpu className="h-3.5 w-3.5" />
             Donanım & Altyapı
           </span>
@@ -124,8 +123,7 @@ function Hero() {
         </div>
       </article>
 
-      {/* Tag pills */}
-      <div className="mt-6 flex flex-wrap items-center gap-2 animate-fade-in-up" aria-label="Konu etiketleri">
+      <div className="mt-6 flex flex-wrap items-center gap-2 anim-in" aria-label="Konu etiketleri">
         {TAGS.map((tag) => (
           <Link
             key={tag.label}
@@ -149,7 +147,7 @@ function StatsBar() {
         {STATS.map((stat) => (
           <div
             key={stat.label}
-            className="group relative overflow-hidden rounded-2xl border border-border bg-card p-5 text-center transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 card-lift"
+            className="group relative overflow-hidden rounded-2xl border border-border bg-card p-5 text-center lift hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
           >
             <div className="absolute -right-4 -top-4 h-16 w-16 rounded-full bg-primary/5 blur-2xl transition-opacity group-hover:opacity-100" />
             <stat.icon className="mx-auto h-6 w-6 text-primary/70 transition-transform group-hover:scale-110" />
@@ -173,7 +171,6 @@ function ArticleGrid() {
 
   return (
     <section id="yazilim-ai" className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6">
-      {/* Section header */}
       <div className="flex items-end justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
@@ -196,12 +193,11 @@ function ArticleGrid() {
         </Link>
       </div>
 
-      {/* Article grid */}
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 stagger">
         {list.map((article) => (
           <article
             key={article.slug}
-            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-400 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 card-lift"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card lift hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
           >
             <div className="relative overflow-hidden">
               <img
@@ -255,53 +251,25 @@ function ArticleGrid() {
 }
 
 const JOBS = [
-  {
-    role: "Kıdemli Backend Mühendisi (Go)",
-    company: "FinTech girişimi",
-    location: "İstanbul / Hibrit",
-  },
-  {
-    role: "Makine Öğrenmesi Mühendisi",
-    company: "Otonom sürüş Ar-Ge merkezi",
-    location: "Ankara",
-  },
-  {
-    role: "DevOps / Platform Mühendisi",
-    company: "E-ticaret teknoloji şirketi",
-    location: "Uzaktan",
-  },
-  {
-    role: "Oyun Programcısı (Unreal Engine)",
-    company: "Bağımsız oyun stüdyosu",
-    location: "İzmir / Uzaktan",
-  },
+  { role: "Kıdemli Backend Mühendisi (Go)", company: "FinTech girişimi", location: "İstanbul / Hibrit" },
+  { role: "Makine Öğrenmesi Mühendisi", company: "Otonom sürüş Ar-Ge merkezi", location: "Ankara" },
+  { role: "DevOps / Platform Mühendisi", company: "E-ticaret teknoloji şirketi", location: "Uzaktan" },
+  { role: "Oyun Programcısı (Unreal Engine)", company: "Bağımsız oyun stüdyosu", location: "İzmir / Uzaktan" },
 ];
 
 const EVENTS = [
-  {
-    title: "Türkiye Yapay Zeka Zirvesi 2026",
-    detail: "12-13 Ekim • İstanbul — Üretken yapay zeka, MLOps ve etik oturumları",
-  },
-  {
-    title: "DevFest İstanbul",
-    detail: "24 Ekim • İstanbul — Mobil, web ve bulut atölyeleri",
-  },
-  {
-    title: "Siber Güvenlik CTF Yarışması",
-    detail: "8 Kasım • Çevrim içi — Üniversite takımlarına açık bayrak yakalama etkinliği",
-  },
-  {
-    title: "GameJam TR: 48 Saat Oyun Maratonu",
-    detail: "21 Kasım • Ankara — Bağımsız geliştiriciler için hibrit jam",
-  },
+  { title: "Türkiye Yapay Zeka Zirvesi 2026", detail: "12-13 Ekim • İstanbul — Üretken yapay zeka, MLOps ve etik oturumları" },
+  { title: "DevFest İstanbul", detail: "24 Ekim • İstanbul — Mobil, web ve bulut atölyeleri" },
+  { title: "Siber Güvenlik CTF Yarışması", detail: "8 Kasım • Çevrim içi — Üniversite takımlarına açık bayrak yakalama etkinliği" },
+  { title: "GameJam TR: 48 Saat Oyun Maratonu", detail: "21 Kasım • Ankara — Bağımsız geliştiriciler için hibrit jam" },
 ];
 
 function CareerEvents() {
   return (
-    <section id="kariyer" className="relative border-t border-border bg-card/30 bg-grid">
+    <section id="kariyer" className="relative border-t border-border bg-mesh bg-grid-fine">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2">
-        <div id="etkinlikler-kariyer" className="animate-fade-in-up">
-          <div className="overflow-hidden rounded-2xl border border-border shadow-lg shadow-black/5">
+        <div id="etkinlikler-kariyer" className="anim-in">
+          <div className="overflow-hidden rounded-2xl border border-border shadow-lg shadow-black/10 lift">
             <img
               src={careerImg}
               alt="Yazılım mühendisleri beyaz tahta başında mimari diyagram üzerinde çalışıyor"
@@ -333,8 +301,8 @@ function CareerEvents() {
           </ul>
         </div>
 
-        <div id="etkinlikler" className="animate-fade-in-up">
-          <div className="overflow-hidden rounded-2xl border border-border shadow-lg shadow-black/5">
+        <div id="etkinlikler" className="anim-in">
+          <div className="overflow-hidden rounded-2xl border border-border shadow-lg shadow-black/10 lift">
             <img
               src={eventImg}
               alt="Teknoloji konferansında dev ekran önünde sunum yapan konuşmacı"
@@ -352,7 +320,7 @@ function CareerEvents() {
             {EVENTS.map((event) => (
               <li
                 key={event.title}
-                className="group flex items-start gap-4 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 hover:shadow-md hover:shadow-primary/5 card-lift"
+                className="group flex items-start gap-4 rounded-2xl border border-border bg-card p-4 lift hover:border-primary/40 hover:shadow-md hover:shadow-primary/5"
               >
                 <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all group-hover:bg-primary group-hover:text-primary-foreground">
                   <CalendarDays className="h-5 w-5" />
@@ -375,7 +343,7 @@ function CareerEvents() {
 function AboutTeaser() {
   return (
     <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6">
-      <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-8 aurora gradient-border">
+      <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-8 aurora-blobs ring-gradient">
         <div className="relative">
           <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
             <Zap className="h-4 w-4" />
@@ -413,7 +381,7 @@ function AboutTeaser() {
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground antialiased">
+    <div className="min-h-screen bg-mesh font-sans text-foreground antialiased">
       <SiteHeader />
       <main>
         <Hero />
