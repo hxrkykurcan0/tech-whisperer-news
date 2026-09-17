@@ -1,4 +1,4 @@
-// Set NAPI_RS_NATIVE_LIBRARY_PATH before importing @lovable.dev/vite-tanstack-config,
+// Set NAPI_RS_NATIVE_LIBRARY_PATH before importing the TanStack Start config,
 // which transitively imports @tailwindcss/oxide. On some deployment servers the
 // native binary auto-detection fails and falls back to the WebAssembly path,
 // which tries to allocate ~1GB of WASM memory and crashes.

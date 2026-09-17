@@ -1,4 +1,4 @@
-// Bu içerik Lovable AI ile üretilmiş özgün Türkçe makalelerden oluşur.
+// Bu içerik özgün Türkçe makalelerden oluşur.
 export interface LanguageSection {
   heading: string;
   paragraphs: string[];

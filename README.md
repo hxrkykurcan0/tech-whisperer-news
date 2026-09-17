@@ -1,18 +1,12 @@
-# Cyber Pulse
+# BigKod
 
-Bilgisayar Mühendisliği alanına özel modern, dinamik, tamamen responsive ve koyu ton ağırlıklı bir haber/içerik sitesi oluştur. Header'da logo, Haberler, Yazılım & Yapay Zeka, Kariyer & İlanlar, Etkinlikler menüleri ve koyu/açık tema anahtarı olsun. Hero'da geniş öne çıkan mühendislik haberi; altında 3'lü kart düzeninde son haberler/makaleler/teknoloji gelişmeleri; Python, AI, Cloud, Oyun Geliştirme, Siber Güvenlik tıklanabilir etiketleri; footer'da e-posta bülten kayıt formu ve sosyal medya ikonları bulunsun. Teknolojik, şık, yüksek okunabilirlikte bir tasarım uygula.
+Bilgisayar Mühendisliği alanına özel modern, dinamik, tamamen responsive ve koyu ton ağırlıklı bir haber/içerik sitesi. Header'da logo, Haberler, Yazılım & Yapay Zeka, Kariyer & İlanlar, Etkinlikler menüleri ve koyu/açık tema anahtarı var. Hero'da geniş öne çıkan mühendislik haberi; altında 3'lü kart düzeninde son haberler/makaleler/teknoloji gelişmeleri; Python, AI, Cloud, Oyun Geliştirme, Siber Güvenlik tıklanabilir etiketleri; footer'da e-posta bülten kayıt formu ve sosyal medya ikonları bulunuyor. Teknolojik, şık, yüksek okunabilirlikte bir tasarım uygulanıyor.
 
-This project was built with [Lovable](https://lovable.dev).
+## Deployment
 
-**Live app**: https://tech-whisperer-news.lovable.app
+This project is deployed with [Vercel](https://vercel.com).
 
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/6a5ff6b4-8cd3-46b6-b4e9-9d88832b4fde).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+**Live app**: https://bigkod.vercel.app
 
 ## Development
 

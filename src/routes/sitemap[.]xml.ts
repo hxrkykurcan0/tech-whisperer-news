@@ -4,7 +4,7 @@ import { sitemapStaticPaths, sitemapXML, type SitemapEntry } from "@/lib/sitemap
 import { ARTICLES, CATEGORIES } from "@/lib/articles";
 import { listDbArticleSlugs } from "@/lib/db-articles.functions";
 
-const BASE_URL = "https://tech-whisperer-news.lovable.app";
+const BASE_URL = "https://bigkod.vercel.app";
 
 export const Route = createFileRoute("/sitemap.xml")({
   staticData: { sitemap: false },

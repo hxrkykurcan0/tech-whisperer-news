@@ -153,9 +153,9 @@ export const Route = createFileRoute("/yazilim-dilleri")({
         content:
           "Her yazılım dilinin ne işe yaradığını ve nerelerde kullanıldığını öğrenin: Python'dan Rust'a kapsamlı Türkçe rehber.",
       },
-      { property: "og:url", content: "https://tech-whisperer-news.lovable.app/yazilim-dilleri" },
+      { property: "og:url", content: "https://bigkod.vercel.app/yazilim-dilleri" },
     ],
-    links: [{ rel: "canonical", href: "https://tech-whisperer-news.lovable.app/yazilim-dilleri" }],
+    links: [{ rel: "canonical", href: "https://bigkod.vercel.app/yazilim-dilleri" }],
   }),
   component: LanguagesPage,
 });
