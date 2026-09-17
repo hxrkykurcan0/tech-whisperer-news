@@ -11,6 +11,7 @@ import {
   Twitter,
   X,
   Youtube,
+  ArrowRight,
 } from "lucide-react";
 
 import { CATEGORIES } from "@/lib/articles";
@@ -60,28 +61,29 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-border bg-background/85 shadow-lg shadow-black/5 backdrop-blur-xl"
-          : "border-transparent bg-background/60 backdrop-blur-md"
+          ? "glass border-b border-border shadow-lg shadow-black/10"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2.5 transition-transform hover:scale-[1.02]" aria-label="BigKod ana sayfa">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/90 text-primary-foreground shadow-md shadow-primary/20 transition-all hover:shadow-lg hover:shadow-primary/30">
+        <Link to="/" className="flex items-center gap-2.5 transition-transform hover:scale-[1.03]" aria-label="BigKod ana sayfa">
+          <span className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-md shadow-primary/30 transition-all hover:shadow-lg hover:shadow-primary/40">
             <Cpu className="h-5 w-5" />
+            <span className="absolute inset-0 rounded-xl ring-1 ring-primary/50" />
           </span>
           <span className="font-display text-xl font-bold tracking-tight">
             Big<span className="text-gradient">Kod</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Ana menü">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Ana menü">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="link-underline rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="relative rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground after:absolute after:bottom-1 after:left-3 after:right-3 after:h-px after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               {item.label}
             </a>
@@ -109,7 +111,7 @@ export function SiteHeader() {
 
       {menuOpen && (
         <nav
-          className="border-t border-border bg-background/95 px-4 pb-4 pt-2 backdrop-blur-xl lg:hidden"
+          className="glass border-t border-border px-4 pb-4 pt-2 lg:hidden"
           aria-label="Mobil menü"
         >
           {NAV_ITEMS.map((item) => (
@@ -198,11 +200,11 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer className="relative border-t border-border bg-card/30">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
+    <footer className="relative border-t border-border bg-mesh">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
-          <Link to="/" className="flex items-center gap-2.5 transition-transform hover:scale-[1.02]">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/90 text-primary-foreground shadow-md shadow-primary/20">
+          <Link to="/" className="flex items-center gap-2.5 transition-transform hover:scale-[1.03]">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-md shadow-primary/30">
               <Cpu className="h-5 w-5" />
             </span>
             <span className="font-display text-xl font-bold tracking-tight">
@@ -235,29 +237,29 @@ export function SiteFooter() {
                 <Link
                   to="/kategori/$slug"
                   params={{ slug: category.slug }}
-                  className="link-underline transition-colors hover:text-primary"
+                  className="relative transition-colors hover:text-primary after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
                 >
                   {category.name}
                 </Link>
               </li>
             ))}
             <li>
-              <Link to="/muhendislik-dallari" className="link-underline transition-colors hover:text-primary">
+              <Link to="/muhendislik-dallari" className="relative transition-colors hover:text-primary after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">
                 Mühendislik Dalları
               </Link>
             </li>
             <li>
-              <Link to="/yazilim-dilleri" className="link-underline transition-colors hover:text-primary">
+              <Link to="/yazilim-dilleri" className="relative transition-colors hover:text-primary after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">
                 Yazılım Dilleri
               </Link>
             </li>
             <li>
-              <Link to="/hakkimda" className="link-underline transition-colors hover:text-primary">
+              <Link to="/hakkimda" className="relative transition-colors hover:text-primary after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">
                 Hakkımda
               </Link>
             </li>
             <li>
-              <Link to="/admin" className="link-underline transition-colors hover:text-primary">
+              <Link to="/admin" className="relative transition-colors hover:text-primary after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">
                 Haber Ekle (Yönetim)
               </Link>
             </li>
